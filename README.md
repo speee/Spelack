@@ -13,6 +13,7 @@ https://github.com/speee-dev/dev-docs
 - リアルタイムチャット
 - 本番環境とデプロイができる仕組み
 （EC2にてnginx,unicornを動作、RDS-MySQL）
+
 ### 2nd (Want)
 - スレッドにプライベートチャンネルを実装
 - S3を使ったファイルアップロード機能を実装
