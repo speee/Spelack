@@ -13,6 +13,7 @@ source 'https://rubygems.org' do
   gem 'paperclip'
   gem 'carrierwave'
   gem 'amazon-ec2'
+  gem 'link_thumbnailer'
 
   group :doc do
     gem 'yard'
