@@ -11,11 +11,11 @@ default: &default
 
 development:
   <<: *default
-  database: hoge_development
+  database: spelack_development
 
 test:
   <<: *default
-  database: hoge_test
+  database: spelack_test
 
 staging:
   <<: *default
