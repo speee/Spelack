@@ -19,7 +19,7 @@ source 'https://rubygems.org' do
     gem 'yard'
   end
   group :development do
-    gem 'web-console','~> 2.0'
+    gem 'web-console', '~> 2.0'
   end
 
   group :development, :test do

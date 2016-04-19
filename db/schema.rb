@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(version: 20160419082007) do
 
   create_table "channels", force: :cascade do |t|
-    t.string   "name",            limit: 255
+    t.string   "name",            limit: 190,                 null: false
     t.boolean  "is_private",                  default: false, null: false
     t.string   "description",     limit: 255
     t.integer  "created_user_id", limit: 4
