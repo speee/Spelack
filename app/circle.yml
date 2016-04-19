@@ -1,0 +1,10 @@
+machine:
+  timezone:
+    Asia/Tokyo
+  ruby:
+    version: 2.2.3
+
+test:
+  override:
+    - ./bin/rubocop
+    - ./bin/rspec spec --format progress --format RspecJunitFormatter --out tmp/rspec.xml
