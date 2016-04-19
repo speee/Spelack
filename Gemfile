@@ -8,6 +8,12 @@ source 'https://rubygems.org' do
   gem 'sass-rails'
   gem 'slim-rails'
   gem 'uglifier'
+  gem 'google-api-client'
+  gem 'devise'
+  gem 'paperclip'
+  gem 'carrierwave'
+  gem 'amazon-ec2'
+  gem 'link_thumbnailer'
 
   group :doc do
     gem 'yard'
