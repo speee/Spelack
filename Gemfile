@@ -1,19 +1,20 @@
 ruby '2.2.3'
 
 source 'https://rubygems.org' do
+  gem 'amazon-ec2'
+  gem 'carrierwave'
   gem 'coffee-rails'
+  gem 'devise'
+  gem 'google-api-client'
   gem 'jbuilder'
+  gem 'jquery-rails'
+  gem 'link_thumbnailer'
   gem 'mysql2', '~> 0.3.20'
+  gem 'paperclip'
   gem 'rails', '4.2.4'
   gem 'sass-rails'
   gem 'slim-rails'
   gem 'uglifier'
-  gem 'google-api-client'
-  gem 'devise'
-  gem 'paperclip'
-  gem 'carrierwave'
-  gem 'amazon-ec2'
-  gem 'link_thumbnailer'
 
   group :doc do
     gem 'yard'
@@ -34,8 +35,8 @@ source 'https://rubygems.org' do
 
   group :test do
     gem 'database_rewinder'
-    gem 'rspec-rails'
     gem 'rspec_junit_formatter'
+    gem 'rspec-rails'
     gem 'simplecov', require: false
   end
 
