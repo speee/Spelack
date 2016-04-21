@@ -24,24 +24,24 @@ source 'https://rubygems.org' do
 
   group :development, :test do
     gem 'better_errors'
-    gem 'validation_examples_matcher'
     gem 'bullet'
-    gem 'capybara'
-    gem 'capybara-screenshot'
     gem 'factory_girl_rails'
     gem 'ffaker'
-    gem 'json_expressions'
     gem 'launchy'
-    gem 'poltergeist'
     gem 'pry-byebug'
     gem 'pry-rails'
     gem 'rubocop', require: false
   end
 
   group :test do
+    gem 'capybara'
+    gem 'capybara-screenshot'
     gem 'database_rewinder'
+    gem 'json_expressions'
     gem 'rspec-rails'
     gem 'rspec_junit_formatter'
+    gem 'poltergeist'
+    gem 'validation_examples_matcher'
     gem 'simplecov', require: false
   end
 
