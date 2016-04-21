@@ -1,42 +1,34 @@
 require 'rails_helper'
 
 RSpec.describe Channel do
-  let(:channel) { FG.build(:channel) }
-  describe 'name' do
-    context 'when it is empty' do
-      before { channel.name = nil }
-      it { is_expected.not_to be_valid }
+  subject { build(:channel) }
+  describe 'validations' do
+    describe 'name' do
+      context 'when it is empty' do
+        it { is_expected.to be_invalid_on(:name).with(nil) }
+      end
+
+      context 'when it is over' do
+        it { is_expected.to be_invalid_on(:name).with('a' * 51) }
+      end
     end
 
-    context 'when it is over' do
-      before { channel.name = 'a' * 51 }
-      it { is_expected.not_to be_valid }
-    end
-  end
-
-  describe 'is_private' do
-    context 'when it is empty' do
-      before { channel.is_private = nil }
-      it { is_expected.not_to be_valid }
-    end
-  end
-
-  describe 'description' do
-    context 'when it is empty' do
-      before { channel.description = nil }
-      it { is_expected.not_to be_valid }
+    describe 'status' do
+      context 'when it is empty' do
+        it { is_expected.to be_invalid_on(:status).with(nil) }
+      end
     end
 
-    context 'when it is over' do
-      before { channel.description = 'a' * 1001 }
-      it { is_expected.not_to be_valid }
+    describe 'description' do
+      context 'when it is over' do
+        it { is_expected.to be_invalid_on(:description).with('a' * 1001) }
+      end
     end
-  end
 
-  describe 'created_user_id' do
-    context 'when it is empty' do
-      before { channel.created_user_id = nil }
-      it { is_expected.not_to be_valid }
+    describe 'author_id' do
+      context 'when it is empty' do
+        it { is_expected.to be_invalid_on(:author_id).with(nil) }
+      end
     end
   end
 end
