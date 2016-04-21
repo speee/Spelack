@@ -14,6 +14,8 @@ source 'https://rubygems.org' do
   gem 'carrierwave'
   gem 'amazon-ec2'
   gem 'link_thumbnailer'
+  gem 'react-rails'
+  gem 'websocket-rails'
 
   group :doc do
     gem 'yard'
