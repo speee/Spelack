@@ -25,8 +25,13 @@ source 'https://rubygems.org' do
   group :development, :test do
     gem 'better_errors'
     gem 'bullet'
+    gem 'capybara'
+    gem 'capybara-screenshot'
     gem 'factory_girl_rails'
     gem 'ffaker'
+    gem 'json_expressions'
+    gem 'launchy'
+    gem 'poltergeist'
     gem 'pry-byebug'
     gem 'pry-rails'
     gem 'rubocop', require: false
