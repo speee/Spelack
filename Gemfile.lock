@@ -320,6 +320,8 @@ GEM
       rack
       raindrops (~> 0.7)
     uniform_notifier (1.9.0)
+    validation_examples_matcher (1.0.1)
+      rspec-expectations (~> 3.0)
     video_info (2.6.0)
       addressable (~> 2.3)
       htmlentities (~> 4.3)
@@ -377,6 +379,7 @@ DEPENDENCIES
   slim-rails!
   uglifier!
   unicorn (~> 4.9.0)!
+  validation_examples_matcher!
   web-console (~> 2.0)!
   yard!
 

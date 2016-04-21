@@ -24,6 +24,7 @@ source 'https://rubygems.org' do
 
   group :development, :test do
     gem 'better_errors'
+    gem 'validation_examples_matcher'
     gem 'bullet'
     gem 'capybara'
     gem 'capybara-screenshot'
