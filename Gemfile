@@ -14,6 +14,7 @@ source 'https://rubygems.org' do
   gem 'paperclip'
   gem 'puma'
   gem 'rails', '4.2.4'
+  gem 'react-rails'
   gem 'sass-rails'
   gem 'slim-rails'
   gem 'uglifier'
