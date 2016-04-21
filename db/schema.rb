@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160419112732) do
+ActiveRecord::Schema.define(version: 20160421064306) do
 
   create_table "channels", force: :cascade do |t|
     t.string   "name",            limit: 190,                 null: false
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20160419112732) do
 
   add_index "channels", ["name"], name: "index_channels_on_name", unique: true, using: :btree
 
-  create_table "chats", force: :cascade do |t|
+  create_table "messages", force: :cascade do |t|
     t.text     "text",       limit: 65535
     t.integer  "user_id",    limit: 4
     t.integer  "channel_id", limit: 4
