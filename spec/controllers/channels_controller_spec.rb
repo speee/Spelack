@@ -2,17 +2,17 @@ require 'rails_helper'
 
 RSpec.describe ChannelsController do
   shared_examples_for 'http_succses' do |template|
-    it { expect(response.status).to eq(200) }
-    it { expect(response).to render_template template }
+    specify { expect(response).to have_http_status(:ok) }
+    specify { expect(response).to render_template template }
   end
   describe 'POST #create' do
-    context 'when saving channel is succeeded' do
+    context 'when saving channel is success' do
       before { post :create, channel: attributes_for(:channel) }
       it { change(Channel, :count).by(2) }
-      it { expect(response).to have_http_status(302) }
-      it { expect(response).to redirect_to channel_path(assigns(:channel).id) }
+      specify { expect(response).to have_http_status(302) }
+      specify { expect(response).to redirect_to channel_path(assigns(:channel).id) }
     end
-    context 'when saving channel is not succeeded' do
+    context 'when saving channel is not success' do
       before { post :create, channel: attributes_for(:channel, name: nil) }
       it_behaves_like 'http_succses', :new
     end
