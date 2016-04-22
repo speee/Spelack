@@ -1,6 +1,5 @@
-class RoomsController < ApplicationController
-  def show
-    @messages = Message.all
+class MessagesController < ApplicationController
+  def index
   end
   def create
     ActionCable.server.broadcast "messages",

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get 'rooms/show'
+  root "messages#index"
+  resources :messages, only: %i(index create)
   devise_for :users
-mount ActionCable.server => '/cable'
+  mount ActionCable.server => '/cable'
 end
