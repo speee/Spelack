@@ -15,6 +15,9 @@ class ChannelsController < ApplicationController
     end
   end
 
+  def show
+  end
+
   def channel_params
     params.require(:channel).permit(:name, :description, :status, :author_id)
   end
