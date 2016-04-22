@@ -9,7 +9,7 @@ RSpec.describe ChannelsController do
     context 'when saving channel is succeeded' do
       before { post :create, channel: attributes_for(:channel) }
       it { change(Channel, :count).by(2) }
-      it { expect(response).to redirect_to channel_path(Channel.last) }
+      it { expect(response).to redirect_to channel_path(assigns(:channel).id) }
     end
     context 'when saving channel is not succeeded' do
       before { post :create, channel: attributes_for(:channel, name: nil) }
