@@ -18,6 +18,8 @@ class ChannelsController < ApplicationController
   def show
   end
 
+  private
+
   def channel_params
     params.require(:channel).permit(:name, :description, :status, :author_id)
   end
