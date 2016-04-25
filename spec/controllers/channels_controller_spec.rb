@@ -51,7 +51,7 @@ RSpec.describe ChannelsController do
       it 'changes channels attributes' do
         expect do
           patch :update, id: channel, channel: attributes_for(:channel, name: name)
-        end.to change{ assigns(:channel).name }.from(channel.name).to(name)
+        end.to change { assigns(:channel).name }.from(channel.name).to(name)
       end
     end
     context 'when updating channel is not success' do
