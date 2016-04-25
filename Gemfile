@@ -38,10 +38,15 @@ source 'https://rubygems.org' do
   end
 
   group :test do
+    gem 'capybara'
+    gem 'capybara-screenshot'
     gem 'database_rewinder'
+    gem 'json_expressions'
+    gem 'poltergeist'
     gem 'rspec-rails'
     gem 'rspec_junit_formatter'
     gem 'simplecov', require: false
+    gem 'validation_examples_matcher'
   end
 
   group :production do
