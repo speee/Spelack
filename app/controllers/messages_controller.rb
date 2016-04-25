@@ -3,9 +3,7 @@ class MessagesController < ApplicationController
   end
 
   def create
-    ActionCable.server.broadcast 'messages',
-      body: params[:message][:body],
-      username: params[:message][:username]
+    MessageBroadcastJob.perform_later(@message)
     head :ok
   end
 end
