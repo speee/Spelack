@@ -26,11 +26,9 @@ RSpec.describe ChannelsController do
     it_behaves_like 'http_succses', :new
   end
   describe 'GET #show' do
-    before do
-      @channel = create(:channel)
-      get :show, id: @channel
-    end
-    specify { expect(assigns(:channel)).to eq @channel }
+    let(:channel) { create(:channel) }
+    before { get :show, id: channel }
+    specify { expect(assigns(:channel)).to eq channel }
     it_behaves_like 'http_succses', :show
   end
 end
