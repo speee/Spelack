@@ -16,6 +16,7 @@ source 'https://rubygems.org' do
   gem 'rails', '4.2.4'
   gem 'react-rails'
   gem 'sass-rails'
+  gem 'sidekiq'
   gem 'slim-rails'
   gem 'uglifier'
 

@@ -3,9 +3,18 @@ class MessagesController < ApplicationController
   end
 
   def create
-    ActionCable.server.broadcast 'messages',
-      body: params[:message][:body],
-      username: params[:message][:username]
-    head :ok
+    @message = Message.new(message_params)
+    if @message.save
+      MessageBroadcastJob.perform_later(@message)
+      head :ok
+    else
+      render :index
+    end
+  end
+
+  private
+
+  def message_params
+    params.require(:message).permit(:text, :channel_id, :user_id)
   end
 end
