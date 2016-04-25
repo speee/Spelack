@@ -1,0 +1,10 @@
+h1 Channel List
+
+table
+  tbody
+    - @channels.each do |channel|
+      tr
+        td = link_to channel.name, channel
+br
+
+= link_to 'Add channel', new_channel_path
