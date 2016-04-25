@@ -31,4 +31,23 @@ RSpec.describe ChannelsController do
     specify { expect(assigns(:channel)).to eq channel }
     it_behaves_like 'http_succses', :show
   end
+  describe 'GET #edit' do
+    let(:channel) { create(:channel) }
+    before { get :edit, id: channel }
+    specify { expect(assigns(:channel)).to eq(channel) }
+    it_behaves_like 'http_succses', :edit
+  end
+  describe 'PATCH #update' do
+    let(:channel) { create(:channel) }
+    context 'when updating channel is success' do
+      before { patch :update, id: channel, channel: attributes_for(:channel) }
+      specify { expect(assigns(:channel)).to eq channel }
+      specify { expect(response).to have_http_status(302) }
+      specify { expect(response).to redirect_to channel_path(assigns(:channel).id) }
+    end
+    context 'when updating channel is not success' do
+      before { patch :update, id: channel, channel: attributes_for(:channel, name: nil) }
+      it_behaves_like 'http_succses', :edit
+    end
+  end
 end
