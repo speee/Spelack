@@ -4,10 +4,10 @@ br
 = form_for :message, url: messages_path, remote: true, id: 'messages-form' do |f|
   = f.label :username, 'Username:'
   br
-  = f.text_field :username
+  = f.text_field :user_id
   br
-  = f.label :body, 'Message:'
+  = f.label :text, 'Message:'
   br
-  = f.text_field :body
+  = f.text_field :text
   br
   = f.submit 'Send message'
