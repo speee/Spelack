@@ -11,6 +11,10 @@ RSpec.describe Message do
       context 'when it is nil' do
         it { is_expected.to be_invalid_on(:text).with(nil) }
       end
+
+      context 'when it is over the max charcters' do
+        it { is_expected.to be_invalid_on(:text).with('a' * 4001) }
+      end
     end
   end
 end
