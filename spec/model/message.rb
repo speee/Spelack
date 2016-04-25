@@ -5,7 +5,7 @@ RSpec.describe Message do
   describe 'validations' do
     describe 'text' do
       context 'when it is empty' do
-        it { is_expected.to be_invalid_on(:text).with("") }
+        it { is_expected.to be_invalid_on(:text).with('') }
       end
 
       context 'when it is nil' do
