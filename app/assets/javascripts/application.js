@@ -17,5 +17,3 @@
 //= require channels
 //= require react_ujs
 //= require_tree .
-//= require websocket_rails/main
-
