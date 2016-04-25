@@ -11,18 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160421061228) do
+ActiveRecord::Schema.define(version: 20160425093951) do
 
   create_table "channels", force: :cascade do |t|
-    t.string   "name",        limit: 190,             null: false
-    t.integer  "status",      limit: 4,   default: 0, null: false
-    t.string   "description", limit: 255
-    t.integer  "author_id",   limit: 4
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.string   "name",              limit: 190
+    t.integer  "status",            limit: 4,   default: 0, null: false
+    t.string   "description",       limit: 255
+    t.integer  "author_id",         limit: 4
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+    t.datetime "soft_destroyed_at"
   end
 
   add_index "channels", ["name"], name: "index_channels_on_name", unique: true, using: :btree
+  add_index "channels", ["soft_destroyed_at"], name: "index_channels_on_soft_destroyed_at", using: :btree
 
   create_table "chats", force: :cascade do |t|
     t.text     "text",       limit: 65535

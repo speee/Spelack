@@ -15,6 +15,7 @@ source 'https://rubygems.org' do
   gem 'carrierwave'
   gem 'amazon-ec2'
   gem 'link_thumbnailer'
+  gem 'kakurenbo-puti'
 
   group :doc do
     gem 'yard'
