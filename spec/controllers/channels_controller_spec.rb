@@ -39,11 +39,20 @@ RSpec.describe ChannelsController do
   end
   describe 'PATCH #update' do
     let(:channel) { create(:channel) }
+    let(:name) { FFaker::BaconIpsum.characters(10) }
     context 'when updating channel is success' do
       before { patch :update, id: channel, channel: attributes_for(:channel) }
-      specify { expect(assigns(:channel)).to eq channel }
-      specify { expect(response).to have_http_status(302) }
-      specify { expect(response).to redirect_to channel_path(assigns(:channel).id) }
+      it 'locates the requersted channel' do
+        expect(assigns(:channel)).to eq channel
+        expect(response).to have_http_status(302)
+        expect(response).to redirect_to channel_path(assigns(:channel).id)
+      end
+
+      it 'changes channels attributes' do
+        expect do
+          patch :update, id: channel, channel: attributes_for(:channel, name: name)
+        end.to change { assigns(:channel).name }.from(channel.name).to(name)
+      end
     end
     context 'when updating channel is not success' do
       before { patch :update, id: channel, channel: attributes_for(:channel, name: nil) }
