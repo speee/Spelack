@@ -59,4 +59,12 @@ RSpec.describe ChannelsController do
       it_behaves_like 'http_succses', :edit
     end
   end
+  describe 'DELETE #destroy' do
+    let(:channel) { create(:channel) }
+    before { delete :destroy, id: channel }
+    it 'deletes the channel' do
+      channel.reload
+      expect(channel.delete_at).not_to be_nil
+    end
+  end
 end
