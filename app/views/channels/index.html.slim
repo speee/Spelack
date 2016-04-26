@@ -5,6 +5,7 @@ table
     - @channels.each do |channel|
       tr
         td = link_to channel.name, channel
+        td = link_to '削除', channel, method: :delete
 br
 
 = link_to 'Add channel', new_channel_path

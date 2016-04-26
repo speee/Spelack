@@ -51,12 +51,20 @@ RSpec.describe ChannelsController do
       it 'changes channels attributes' do
         expect do
           patch :update, id: channel, channel: attributes_for(:channel, name: name)
-        end.to change{ assigns(:channel).name }.from(channel.name).to(name)
+        end.to change { assigns(:channel).name }.from(channel.name).to(name)
       end
     end
     context 'when updating channel is not success' do
       before { patch :update, id: channel, channel: attributes_for(:channel, name: nil) }
       it_behaves_like 'http_succses', :edit
+    end
+  end
+  describe 'DELETE #destroy' do
+    let(:channel) { create(:channel) }
+    before { delete :destroy, id: channel }
+    it 'deletes the channel' do
+      channel.reload
+      expect(channel.delete_at).not_to be_nil
     end
   end
 end

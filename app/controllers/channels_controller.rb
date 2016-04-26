@@ -1,7 +1,8 @@
 class ChannelsController < ApplicationController
-  before_action :set_channel, only: [:show, :edit, :update]
+  before_action :set_channel, only: [:show, :edit, :update, :destroy]
+  before_action :set_channels, only: [:index]
+
   def index
-    @channels = Channel.all
   end
 
   def new
@@ -20,6 +21,10 @@ class ChannelsController < ApplicationController
   def show
   end
 
+  def destroy
+    @channel.soft_destroy
+  end
+
   def update
     if @channel.update(channel_params)
       redirect_to channel_path(@channel)
@@ -32,6 +37,10 @@ class ChannelsController < ApplicationController
 
   def set_channel
     @channel = Channel.find(params[:id])
+  end
+
+  def set_channels
+    @channels = Channel.without_soft_destroyed
   end
 
   def channel_params
