@@ -40,7 +40,7 @@ class ChannelsController < ApplicationController
   end
 
   def set_channels
-    @channels = Channel.where(delete_at: nil)
+    @channels = Channel.without_soft_destroyed
   end
 
   def channel_params
