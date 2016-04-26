@@ -21,7 +21,7 @@ RSpec.describe ChannelsController do
     let(:channels) { create_list(:channel, 25) }
     context 'when there is a search word' do
       before { get :index, query: channels[5].name }
-      specify { expect(assigns(:channels)).to include channels[5] }
+      specify { expect(assigns(:channels)).to eq [channels[5]] }
       it_behaves_like 'http_succses', :index
     end
 
