@@ -4,4 +4,12 @@ class Channel < ActiveRecord::Base
   validates :status, presence: true
   validates :description, length: { maximum: 255 }
   validates :author_id, presence: true
+
+  def self.search(search)
+    if search
+      Channel.where(['name LIKE ? ', "%#{search}%"]).without_soft_destroyed
+    else
+      Channel.without_soft_destroyed
+    end
+  end
 end

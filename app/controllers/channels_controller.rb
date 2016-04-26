@@ -1,6 +1,6 @@
 class ChannelsController < ApplicationController
   before_action :set_channel, only: [:show, :edit, :update, :destroy]
-  before_action :set_channels, only: [:index]
+  before_action :search_channels, only: [:index]
 
   def index
   end
@@ -39,8 +39,8 @@ class ChannelsController < ApplicationController
     @channel = Channel.find(params[:id])
   end
 
-  def set_channels
-    @channels = Channel.without_soft_destroyed
+  def search_channels
+    @channels = Channel.search(params[:search])
   end
 
   def channel_params
