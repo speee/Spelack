@@ -18,8 +18,17 @@ RSpec.describe ChannelsController do
     end
   end
   describe 'GET #index' do
-    before { get :index }
-    it_behaves_like 'http_succses', :index
+    let(:channel) { create(:channel) }
+    context 'when there is a search word' do
+      before { get :index, search: channel.name }
+      specify { expect(assigns(:channels)).to include channel }
+      it_behaves_like 'http_succses', :index
+    end
+
+    context 'when the search word does not exist' do
+      before { get :index }
+      it_behaves_like 'http_succses', :index
+    end
   end
   describe 'GET #new' do
     before { get :new }
