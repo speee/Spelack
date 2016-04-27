@@ -2,6 +2,7 @@ ruby '2.2.3'
 
 source 'https://rubygems.org' do
   gem 'coffee-rails'
+  gem 'friendly_id', '~> 5.1.0'
   gem 'jbuilder'
   gem 'jquery-rails'
   gem 'mysql2', '~> 0.3.20'
