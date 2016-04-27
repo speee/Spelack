@@ -39,6 +39,7 @@ source 'https://rubygems.org' do
 
   group :test do
     gem 'database_rewinder'
+    gem 'validation_examples_matcher'
     gem 'rspec_junit_formatter'
     gem 'rspec-rails'
     gem 'simplecov', require: false
