@@ -19,6 +19,7 @@ class ChannelsController < ApplicationController
   end
 
   def show
+    # binding.pry
   end
 
   def destroy
@@ -36,11 +37,11 @@ class ChannelsController < ApplicationController
   private
 
   def set_channel
-    @channel = Channel.find(params[:id])
+    @channel = Channel.find_for_id_from_name(params[:id])
   end
 
   def search_channels
-    @channels = Channel.search(params[:search])
+    @channels = Channel.search(params[:query])
   end
 
   def channel_params
