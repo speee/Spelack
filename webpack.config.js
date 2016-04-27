@@ -11,11 +11,14 @@ config.output = {
   publicPath: '/assets',
 };
 config.resolve = {
-  extensions: ['', '.js','.coffee'],
+  extensions: ['', '.js','jsx'],
   modulesDirectories: [ 'node_modules', 'bower_components' ],
 };
 config.module = {
   loaders: [
-    { test: /\.coffee$/, loader: 'coffee-loader' },
+    { test: /\.js$/,
+      exclude: /node_modules/,
+     loader: 'babel?presets[]=es2015'
+    },
   ],
 };
