@@ -1,3 +1,5 @@
+
+
 ruby '2.2.3'
 
 source 'https://rubygems.org' do
@@ -5,6 +7,7 @@ source 'https://rubygems.org' do
   gem 'carrierwave'
   gem 'coffee-rails'
   gem 'devise'
+  gem 'gem_sort'
   gem 'google-api-client'
   gem 'jbuilder'
   gem 'jquery-rails'
@@ -15,14 +18,14 @@ source 'https://rubygems.org' do
   gem 'sass-rails'
   gem 'slim-rails'
   gem 'uglifier'
-
   group :doc do
     gem 'yard'
   end
+
   group :development do
-    gem 'web-console', '~> 2.0'
     gem 'letter_opener'
     gem 'letter_opener_web'
+    gem 'web-console', '~> 2.0'
   end
 
   group :development, :test do
@@ -37,8 +40,8 @@ source 'https://rubygems.org' do
 
   group :test do
     gem 'database_rewinder'
-    gem 'rspec_junit_formatter'
     gem 'rspec-rails'
+    gem 'rspec_junit_formatter'
     gem 'simplecov', require: false
   end
 
