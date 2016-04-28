@@ -1,3 +1,5 @@
+
+
 ruby '2.2.3'
 
 source 'https://rubygems.org' do
@@ -21,6 +23,8 @@ source 'https://rubygems.org' do
   end
 
   group :development do
+    gem 'letter_opener'
+    gem 'letter_opener_web'
     gem 'web-console', '~> 2.0'
   end
 
