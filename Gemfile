@@ -1,5 +1,3 @@
-
-
 ruby '2.2.3'
 
 source 'https://rubygems.org' do
@@ -23,16 +21,18 @@ source 'https://rubygems.org' do
   end
 
   group :development do
-    gem 'letter_opener'
-    gem 'letter_opener_web'
     gem 'web-console', '~> 2.0'
   end
 
   group :development, :test do
     gem 'better_errors'
     gem 'bullet'
+    gem 'capybara'
+    gem 'capybara-screenshot'
     gem 'factory_girl_rails'
     gem 'ffaker'
+    gem 'json_expressions'
+    gem 'poltergeist'
     gem 'pry-byebug'
     gem 'pry-rails'
     gem 'rubocop', require: false
@@ -43,6 +43,7 @@ source 'https://rubygems.org' do
     gem 'rspec-rails'
     gem 'rspec_junit_formatter'
     gem 'simplecov', require: false
+    gem 'validation_examples_matcher'
   end
 
   group :production do
