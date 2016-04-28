@@ -8,7 +8,7 @@ RSpec.describe User do
         it { is_expected.to be_invalid_on(:nickname).with(nil) }
       end
 
-      context 'when it is over' do
+      context 'when it is over the max characters' do
         it { is_expected.to be_invalid_on(:nickname).with('a' * 21) }
       end
     end
@@ -18,13 +18,13 @@ RSpec.describe User do
         it { is_expected.to be_invalid_on(:first_name).with(nil) }
       end
 
-      context 'when it is over' do
+      context 'when it is over the max characters' do
         it { is_expected.to be_invalid_on(:first_name).with('a' * 31) }
       end
     end
 
     describe 'middle_name' do
-      context 'when it is over' do
+      context 'when it is over the max characters' do
         it { is_expected.to be_invalid_on(:middle_name).with('a' * 31) }
       end
     end
@@ -34,7 +34,7 @@ RSpec.describe User do
         it { is_expected.to be_invalid_on(:last_name).with(nil) }
       end
 
-      context 'when it is over' do
+      context 'when it is over the max characters' do
         it { is_expected.to be_invalid_on(:last_name).with('a' * 31) }
       end
     end
