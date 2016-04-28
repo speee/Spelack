@@ -6,7 +6,7 @@ import { Grid } from 'react-virtualized'
 
 // List data as an array of strings
 const list = [
-  'Brian Vaughn'
+  'messages test'
 ];
 
 ReactDOM.render(

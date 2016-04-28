@@ -12,13 +12,16 @@ config.output = {
 };
 config.resolve = {
   extensions: ['', '.js','jsx'],
-  modulesDirectories: [ 'node_modules', 'bower_components' ],
+  modulesDirectories: [ 'node_modules' ],
 };
 config.module = {
   loaders: [
     { test: /\.js$/,
       exclude: /node_modules/,
      loader: 'babel-loader'
+    },
+    { test: /\.css$/,
+     loader: 'style!css'
     },
   ],
 };
