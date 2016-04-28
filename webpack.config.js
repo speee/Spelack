@@ -3,7 +3,7 @@ var webpack = require('webpack');
 
 var config = module.exports = {
   context: __dirname,
-  entry: './app/frontend/javascripts/entry.js',
+  entry: './app/frontend/javascripts/index.js',
 };
 config.output = {
   path: path.join(__dirname, 'app', 'assets', 'javascripts', 'bundle'),
@@ -18,7 +18,7 @@ config.module = {
   loaders: [
     { test: /\.js$/,
       exclude: /node_modules/,
-     loader: 'babel?presets[]=es2015'
+     loader: 'babel-loader'
     },
   ],
 };
