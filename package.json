@@ -25,6 +25,7 @@
     "react-dom": "^15.0.1",
     "react-virtualized": "^6.3.0",
     "style-loader": "^0.13.1",
+    "superagent": "^1.8.3",
     "webpack": "~1.4.13"
   },
   "scripts": {
