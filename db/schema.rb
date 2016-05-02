@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20160425093951) do
+=======
+ActiveRecord::Schema.define(version: 20160428074158) do
+>>>>>>> e6e20fc... Add for deploy by capistrano
 
   create_table "channels", force: :cascade do |t|
     t.string   "name",        limit: 190
@@ -24,7 +28,7 @@ ActiveRecord::Schema.define(version: 20160425093951) do
   end
 
   add_index "channels", ["delete_at"], name: "index_channels_on_delete_at", using: :btree
-  add_index "channels", ["name"], name: "index_channels_on_name", unique: true, using: :btree
+  add_index "channels", ["name"], name: "index_channels_on_name", type: :fulltext
 
   create_table "chats", force: :cascade do |t|
     t.text     "text",       limit: 65535
