@@ -345,6 +345,7 @@ DEPENDENCIES
   factory_girl_rails!
   ffaker!
   google-api-client!
+  i18n!
   jbuilder!
   jquery-rails!
   letter_opener!

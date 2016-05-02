@@ -17,6 +17,6 @@ Rails.application.configure do
     Bullet.rails_logger = true
     Bullet.add_footer = true
   end
-  config.action_mailer.delivery_method = :letter_openers
+  config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.delivery_method = :letter_opener_web
 end
