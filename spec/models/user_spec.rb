@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe User do
-  subject { build(:user) }
   describe 'validations' do
+    subject { build(:user) }
     describe 'nickname' do
       context 'when it is empty' do
         it { is_expected.to be_invalid_on(:nickname).with(nil) }
