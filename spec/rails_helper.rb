@@ -15,4 +15,10 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   config.include Devise::TestHelpers, type: :controller
   config.include Devise::TestHelpers, type: :view
+  config.extend ControllerMacros, type: :controller
+  config.infer_base_class_for_anonymous_controllers = true
+  # for Capybara : Capybara用のDSLをinclude
+  config.include Capybara::DSL
+  # for Devise : Deviseを使用している時にsign in/outを取るためのヘルパーをinclude
+  include Warden::Test::Helpers
 end
