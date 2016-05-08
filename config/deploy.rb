@@ -11,10 +11,6 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public
 set :rbenv_ruby, '2.2.3'
 
 namespace :deploy do
-  desc 'Restart application'
-  task :restart do
-    invoke 'unicorn:restart'
-  end
   desc 'Create database'
   task :db_create do
     on roles(:db) do |host|

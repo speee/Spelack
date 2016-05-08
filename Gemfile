@@ -34,7 +34,6 @@ source 'https://rubygems.org' do
     gem 'capistrano-rails'
     gem 'capistrano-rbenv'
     gem 'capistrano-bundler'
-    gem 'capistrano3-unicorn'
     gem 'capistrano3-puma'
     gem 'web-console', '~> 2.0'
   end

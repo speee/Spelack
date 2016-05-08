@@ -6,7 +6,10 @@
 # server 'example.com', user: 'deploy', roles: %w{app db web}, my_property: :my_value
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 # server 'db.example.com', user: 'deploy', roles: %w{db}
-
+set :stage, :staging
+set :rails_env, 'staging'
+server '52.193.153.0', user: 'spelack-dev', roles: %w{app}
+set :ssh_options, keys: '~/.ssh/aws_rsa'
 
 
 # role-based syntax
