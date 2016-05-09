@@ -5,14 +5,12 @@ source 'https://rubygems.org' do
   gem 'amazon-ec2'
   gem 'carrierwave'
   gem 'coffee-rails'
-<<<<<<< HEAD
-=======
   gem 'devise'
   gem 'friendly_id', '~> 5.1.0'
   gem 'google-api-client'
->>>>>>> 3ec02bd... gemfile修正
   gem 'jbuilder'
   gem 'jquery-rails'
+  gem 'kakurenbo-puti'
   gem 'link_thumbnailer'
   gem 'mysql2', '~> 0.3.20'
   gem 'paperclip'
@@ -23,8 +21,6 @@ source 'https://rubygems.org' do
   gem 'sidekiq'
   gem 'slim-rails'
   gem 'uglifier'
-  gem 'link_thumbnailer'
-  gem 'kakurenbo-puti'
 
   group :doc do
     gem 'yard'

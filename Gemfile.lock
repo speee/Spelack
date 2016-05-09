@@ -156,6 +156,8 @@ GEM
       websocket-driver (>= 0.5.1)
     ffaker (2.2.0)
     ffi (1.9.10)
+    friendly_id (5.1.0)
+      activerecord (>= 4.0.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     google-api-client (0.9.5)
@@ -445,6 +447,7 @@ DEPENDENCIES
   devise!
   factory_girl_rails!
   ffaker!
+  friendly_id (~> 5.1.0)!
   google-api-client!
   jbuilder!
   jquery-rails!
