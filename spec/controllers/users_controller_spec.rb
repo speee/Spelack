@@ -9,7 +9,6 @@ describe UsersController do
   login_user
   describe 'login user' do
     describe 'GET #index' do
-
       # ログインできた時にindexページに遷移するか
       context 'by login user' do
         before { get :index }
@@ -24,7 +23,6 @@ describe UsersController do
         before { get :index }
         specify { response.should be_success }
       end
-
     end
   end
 end
