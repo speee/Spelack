@@ -40,5 +40,11 @@ namespace :deploy do
       # end
     end
   end
+  namespace :setup do
+   task :fix_premissions do
+     "find . -type f -print | xargs chmod 644 #{deploy_to}"
+     "find . -type d -print | xargs chmod 755 #{deploy_to}"
+   end
+  end
 end
 after 'deploy:publishing', 'deploy:restart'
