@@ -10,7 +10,7 @@ RSpec.describe ChannelsController do
       before { post :create, channel: attributes_for(:channel) }
       it { change(Channel, :count).by(2) }
       specify { expect(response).to have_http_status(302) }
-      specify { expect(response).to redirect_to channel_path(assigns(:channel).name) }
+      specify { expect(response).to redirect_to channel_path(assigns(:channel)) }
     end
     context 'when saving channel is not success' do
       before { post :create, channel: attributes_for(:channel, name: nil) }
@@ -55,7 +55,7 @@ RSpec.describe ChannelsController do
         patch :update, id: channel, channel: attributes_for(:channel)
         expect(assigns(:channel)).to eq channel
         expect(response).to have_http_status(302)
-        expect(response).to redirect_to channel_path(assigns(:channel).name)
+        expect(response).to redirect_to channel_path(assigns(:channel))
       end
 
       it 'changes channels attributes' do

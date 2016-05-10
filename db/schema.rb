@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160427065026) do
+ActiveRecord::Schema.define(version: 20160510080606) do
 
   create_table "channels", force: :cascade do |t|
     t.string   "name",        limit: 190
@@ -35,10 +35,10 @@ ActiveRecord::Schema.define(version: 20160427065026) do
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
-    t.string   "slug",           limit: 255, null: false
+    t.string   "slug",           limit: 190, null: false
     t.integer  "sluggable_id",   limit: 4,   null: false
     t.string   "sluggable_type", limit: 50
-    t.string   "scope",          limit: 255
+    t.string   "scope",          limit: 190
     t.datetime "created_at"
   end
 
