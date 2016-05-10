@@ -3,7 +3,7 @@ lock '3.5.0'
 
 set :application, 'Spelack'
 set :repo_url, 'git@github.com:MKenta/Spelack.git'
-set :branch, 'deploy_test'
+set :branch, 'aws_chat_test'
 set :deploy_to, '/var/www/Spelack'
 set :log_level, :debug
 set :rbenv_type, :user
