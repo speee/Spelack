@@ -8,9 +8,3 @@ test:
   override:
     - ./bin/rubocop
     - ./bin/rspec spec --format progress --format RspecJunitFormatter --out tmp/rspec.xml
-
-dependencies:
-  pre:
-    - sudo apt-add-repository -y 'deb http://ppa.launchpad.net/ondrej/mysql-experimental/ubuntu precise main'
-    - sudo apt-get update; sudo DEBIAN_FRONTEND=noninteractive apt-get install -y mysql-server-5.6
-    - echo '[mysqld]' | sudo sh -c 'cat >>  /etc/mysql/my.cnf'; echo 'innodb_ft_min_token_size = 2' | sudo sh -c 'cat >>  /etc/mysql/my.cnf'; sudo /etc/init.d/mysql restart
