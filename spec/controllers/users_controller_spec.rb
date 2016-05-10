@@ -21,7 +21,7 @@ describe UsersController do
 
       context 'should get index' do
         before { get :index }
-        specify { response.should be_success }
+        specify { expect(response).to be_success }
       end
     end
   end
