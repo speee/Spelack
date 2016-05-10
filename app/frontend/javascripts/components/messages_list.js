@@ -28,9 +28,7 @@ export default class MessagesList extends Component {
     this._updateUseDynamicRowHeight = this._updateUseDynamicRowHeight.bind(this)
   }
   componentWillMount () {
-    //console.log(callApi('messages/index'))
-    //this.setState({ list:callApi('messages/index')})
-    this.serverRequest = callApi('messages/index')
+    callApi('messages/index')
     .then(
       (obj) => {
         this.setState({ list:obj})
@@ -41,7 +39,6 @@ export default class MessagesList extends Component {
   }
 
   render () {
-    //this.setState({ list:callApi('messages/index')})
     const {
       overscanRowsCount,
       rowsCount,
@@ -51,11 +48,10 @@ export default class MessagesList extends Component {
       virtualScrollRowHeight,
       list
     } = this.state
-    console.log(this.state.list)
+    console.debug(this.state.list)
     return (
         <div>
 
-            {({ width }) => (
               <VirtualScroll
                 ref='VirtualScroll'
                 className='VirtualScroll'
@@ -66,9 +62,8 @@ export default class MessagesList extends Component {
                 rowHeight={useDynamicRowHeight ? this._getRowHeight : virtualScrollRowHeight}
                 rowRenderer={this._rowRenderer}
                 scrollToIndex={scrollToIndex}
-                width={width}
+                width={200}
               />
-            )}
 
         </div>
     )
@@ -79,9 +74,8 @@ export default class MessagesList extends Component {
   }
 
   _getDatum (index) {
-    const { list } = this.state
-
-    return list.get(index % list.size)
+    const list = this.state.list
+    return list[(index % list.length)]
   }
 
   _getRowHeight (index) {
@@ -119,8 +113,6 @@ export default class MessagesList extends Component {
     let datum = this._getDatum(index)
 
     let additionalContent
-    console.log('a')
-    console.log(datum.text)
     return (
       <div>
         {datum.text}
