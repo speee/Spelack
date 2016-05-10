@@ -19,6 +19,20 @@ RSpec.describe Channel do
       context 'When included double-byte characters' do
         it { is_expected.to be_invalid_on(:name).with(FFaker::JobJA.title) }
       end
+
+      context 'When that contains an illegal symbol' do
+        ['?', '%', '$', '*', '<', '>', '#', '(', ')', '|', '¥', ';', '&', '@'].each do |symbol|
+          it { is_expected.to be_invalid_on(:name).with(FFaker::BaconIpsum.characters(10) + symbol) }
+        end
+      end
+
+      context 'When it is already registered' do
+        before do
+          channel = create(:channel)
+          @name = channel.name
+        end
+        it { is_expected.to be_invalid_on(:name).with(@name) }
+      end
     end
 
     describe 'status' do
