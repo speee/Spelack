@@ -17,9 +17,9 @@ export default class MessagesList extends Component {
       useDynamicRowHeight: false,
       virtualScrollHeight: 300,
       virtualScrollRowHeight: 60,
-      list: []
+      list: [{name:'hoge'}]
     }
-    this.componentWillMount = this.componentDidMount.bind(this)
+    this.componentDidMount = this.componentDidMount.bind(this)
     this._getRowHeight = this._getRowHeight.bind(this)
     this._noRowsRenderer = this._noRowsRenderer.bind(this)
     this._onRowsCountChange = this._onRowsCountChange.bind(this)
@@ -28,6 +28,7 @@ export default class MessagesList extends Component {
     this._updateUseDynamicRowHeight = this._updateUseDynamicRowHeight.bind(this)
   }
   componentDidMount () {
+    console.log('didmount')
     callApi('messages/index')
     .then(
       (obj) => {
