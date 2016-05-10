@@ -12,12 +12,12 @@ export default class MessagesList extends Component {
     super(props)
     this.state = {
       overscanRowsCount: 5,
-      rowsCount: 20,
+      rowsCount: 0,
       scrollToIndex: undefined,
       useDynamicRowHeight: false,
       virtualScrollHeight: 300,
       virtualScrollRowHeight: 60,
-      list: [{name:'hoge'}]
+      list: []
     }
     this.componentDidMount = this.componentDidMount.bind(this)
     this._getRowHeight = this._getRowHeight.bind(this)
@@ -32,7 +32,9 @@ export default class MessagesList extends Component {
     callApi('messages/index')
     .then(
       (obj) => {
-        this.setState({ list:obj})
+        this.setState({ list:obj,
+          rowsCount:obj.length
+        })
       }
     ).catch(
       (err) => { console.error(err); }
@@ -63,7 +65,7 @@ export default class MessagesList extends Component {
                 rowHeight={useDynamicRowHeight ? this._getRowHeight : virtualScrollRowHeight}
                 rowRenderer={this._rowRenderer}
                 scrollToIndex={scrollToIndex}
-                width={200}
+                width={600}
               />
 
         </div>
