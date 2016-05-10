@@ -19,7 +19,7 @@ export default class MessagesList extends Component {
       virtualScrollRowHeight: 60,
       list: []
     }
-    this.componentWillMount = this.componentWillMount.bind(this)
+    this.componentWillMount = this.componentDidMount.bind(this)
     this._getRowHeight = this._getRowHeight.bind(this)
     this._noRowsRenderer = this._noRowsRenderer.bind(this)
     this._onRowsCountChange = this._onRowsCountChange.bind(this)
@@ -27,7 +27,7 @@ export default class MessagesList extends Component {
     this._rowRenderer = this._rowRenderer.bind(this)
     this._updateUseDynamicRowHeight = this._updateUseDynamicRowHeight.bind(this)
   }
-  componentWillMount () {
+  componentDidMount () {
     callApi('messages/index')
     .then(
       (obj) => {
