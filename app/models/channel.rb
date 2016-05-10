@@ -9,7 +9,7 @@ class Channel < ActiveRecord::Base
 
   def self.search(query)
     if query
-      Channel.where(['name LIKE ? ', "%#{query}%"]).without_soft_destroyed
+      Channel.where(['name LIKE ? ', "#{query}%"]).without_soft_destroyed
     else
       Channel.without_soft_destroyed
     end
