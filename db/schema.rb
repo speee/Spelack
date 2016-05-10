@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20160425093951) do
   add_index "channels", ["delete_at"], name: "index_channels_on_delete_at", using: :btree
   add_index "channels", ["name"], name: "index_channels_on_name", unique: true, using: :btree
 
-  create_table "chats", force: :cascade do |t|
+  create_table "messages", force: :cascade do |t|
     t.text     "text",       limit: 65535
     t.integer  "user_id",    limit: 4
     t.integer  "channel_id", limit: 4
