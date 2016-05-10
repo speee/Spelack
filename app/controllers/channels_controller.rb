@@ -40,7 +40,7 @@ class ChannelsController < ApplicationController
   end
 
   def search_channels
-    @channels = Channel.search(params[:query])
+    @channels = Channel.search(params[:search])
   end
 
   def channel_params
