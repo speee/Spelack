@@ -17,10 +17,13 @@
       <% else %>
         <div>
           <%= link_to "ログイン", new_user_session_path, class: 'post' %>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
           <%= link_to "新規登録", new_user_registration_path, class: 'post' %>
         </div>
       <% end %>
     </div>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
   </header>
   <%= yield %>
   <footer>
