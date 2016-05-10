@@ -4,6 +4,7 @@ import { VirtualScroll } from 'react-virtualized';
 import 'react-virtualized/styles.css'; // only needs to be imported once
 import request from 'superagent';
 import shallowCompare from 'react-addons-shallow-compare'
+import { callApi } from '../utils'
 
 export default class MessagesList extends Component {
 
@@ -16,22 +17,9 @@ export default class MessagesList extends Component {
       useDynamicRowHeight: false,
       virtualScrollHeight: 300,
       virtualScrollRowHeight: 60,
-      list: new Promise(
-        (resolve, reject) => {
-          request.get("http://localhost:3000/api/messages/index" )
-          .end(
-            (err, res) => {
-              if (err) {
-                reject(err);
-              } else {
-                resolve(JSON.parse(res.text));
-              }
-            }
-          );
-        }
-      )
+      list: []
     }
-
+    this.componentWillMount = this.componentWillMount.bind(this)
     this._getRowHeight = this._getRowHeight.bind(this)
     this._noRowsRenderer = this._noRowsRenderer.bind(this)
     this._onRowsCountChange = this._onRowsCountChange.bind(this)
@@ -39,18 +27,31 @@ export default class MessagesList extends Component {
     this._rowRenderer = this._rowRenderer.bind(this)
     this._updateUseDynamicRowHeight = this._updateUseDynamicRowHeight.bind(this)
   }
+  componentWillMount () {
+    //console.log(callApi('messages/index'))
+    //this.setState({ list:callApi('messages/index')})
+    this.serverRequest = callApi('messages/index')
+    .then(
+      (obj) => {
+        this.setState({ list:obj})
+      }
+    ).catch(
+      (err) => { console.error(err); }
+    );
+  }
 
   render () {
-
+    //this.setState({ list:callApi('messages/index')})
     const {
       overscanRowsCount,
       rowsCount,
       scrollToIndex,
       useDynamicRowHeight,
       virtualScrollHeight,
-      virtualScrollRowHeight
+      virtualScrollRowHeight,
+      list
     } = this.state
-
+    console.log(this.state.list)
     return (
         <div>
 
