@@ -5,6 +5,7 @@ import 'react-virtualized/styles.css'; // only needs to be imported once
 import request from 'superagent';
 import shallowCompare from 'react-addons-shallow-compare'
 import { callApi } from '../utils'
+import Message from './message'
 
 export default class MessagesList extends Component {
 
@@ -39,6 +40,24 @@ export default class MessagesList extends Component {
     ).catch(
       (err) => { console.error(err); }
     );
+    this.setupSubscription()
+  }
+  setupSubscription() {
+    App.cable.subscriptions.create('MessagesChannel', {
+      received(message) {
+        return this.updateMessage(message)
+      },
+      updateMessage: this.updateMessage.bind(this)
+    })
+  }
+
+  updateMessage(message) {
+    console.log(message)
+    this.setState({
+      list: this.state.list.concat(JSON.parse(message)),
+      rowsCount: this.state.rowsCount + 1,
+      scrollToIndex: this.state.rowsCount
+    })
   }
 
   render () {
@@ -51,7 +70,7 @@ export default class MessagesList extends Component {
       virtualScrollRowHeight,
       list
     } = this.state
-    console.debug(this.state.list)
+    console.log(this.state.list)
     return (
         <div>
 
@@ -112,14 +131,13 @@ export default class MessagesList extends Component {
 
   _rowRenderer (index) {
     const { useDynamicRowHeight } = this.state
-
     let datum = this._getDatum(index)
 
-    let additionalContent
     return (
-      <div>
-        {datum.text}
-      </div>
+      <Message
+      text = {datum.text}
+      date = {datum.created_at}
+      />
     )
   }
 
