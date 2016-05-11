@@ -1,6 +1,6 @@
 production: &production
-  :url: redis://localhost:6379
-  :host: localhost
+  :url: redis://spelackcache-001.apvows.0001.apne1.cache.amazonaws.com:6379
+  :host: spelackcache-001.apvows.0001.apne1.cache.amazonaws.com
   :port: 6379
   :timeout: 1
 local: &local
