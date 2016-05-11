@@ -305,6 +305,22 @@ GEM
       rails (>= 3.2)
       tilt
     redis (3.3.0)
+    redis-actionpack (4.0.1)
+      actionpack (~> 4)
+      redis-rack (~> 1.5.0)
+      redis-store (~> 1.1.0)
+    redis-activesupport (4.1.5)
+      activesupport (>= 3, < 5)
+      redis-store (~> 1.1.0)
+    redis-rack (1.5.0)
+      rack (~> 1.5)
+      redis-store (~> 1.1.0)
+    redis-rails (4.0.0)
+      redis-actionpack (~> 4)
+      redis-activesupport (~> 4)
+      redis-store (~> 1.1.0)
+    redis-store (1.1.7)
+      redis (>= 2.2)
     representable (2.3.0)
       uber (~> 0.0.7)
     responders (2.2.0)
@@ -457,6 +473,7 @@ DEPENDENCIES
   puma!
   rails (= 4.2.4)!
   react-rails!
+  redis-rails!
   rspec-rails!
   rspec_junit_formatter!
   rubocop!
