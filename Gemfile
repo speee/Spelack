@@ -5,6 +5,7 @@ source 'https://rubygems.org' do
   gem 'carrierwave'
   gem 'coffee-rails'
   gem 'devise'
+  gem 'gem_sort'
   gem 'google-api-client'
   gem 'jbuilder'
   gem 'jquery-rails'
@@ -16,10 +17,10 @@ source 'https://rubygems.org' do
   gem 'slim-rails'
   gem 'uglifier'
   gem 'i18n'
-
   group :doc do
     gem 'yard'
   end
+
   group :development do
     gem 'web-console', '~> 2.0'
     gem 'letter_opener'
@@ -29,8 +30,12 @@ source 'https://rubygems.org' do
   group :development, :test do
     gem 'better_errors'
     gem 'bullet'
+    gem 'capybara'
+    gem 'capybara-screenshot'
     gem 'factory_girl_rails'
     gem 'ffaker'
+    gem 'json_expressions'
+    gem 'poltergeist'
     gem 'pry-byebug'
     gem 'pry-rails'
     gem 'rubocop', require: false
@@ -38,9 +43,10 @@ source 'https://rubygems.org' do
 
   group :test do
     gem 'database_rewinder'
-    gem 'rspec_junit_formatter'
     gem 'rspec-rails'
+    gem 'rspec_junit_formatter'
     gem 'simplecov', require: false
+    gem 'validation_examples_matcher'
   end
 
   group :production do
