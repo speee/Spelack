@@ -1,7 +1,7 @@
 class AddAttachmentAvatarToUsers < ActiveRecord::Migration
   def self.up
     change_table :users do |t|
-      t.attachment :avatar, null: false, default: 'default_avatar.png'
+      t.attachment :avatar
     end
   end
 
