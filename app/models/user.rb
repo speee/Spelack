@@ -14,4 +14,8 @@ class User < ActiveRecord::Base
   validates :first_name, presence: true, length: { maximum: 30 }
   validates :middle_name, length: { maximum: 30 }
   validates :last_name, presence: true, length: { maximum: 30 }
+
+  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }
+  validates_attachment :avatar, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
+
 end
