@@ -31,6 +31,7 @@ source 'https://rubygems.org' do
     gem 'capistrano-rbenv'
     gem 'capistrano-bundler'
     gem 'capistrano3-puma'
+    gem 'itamae'
     gem 'web-console', '~> 2.0'
   end
 
