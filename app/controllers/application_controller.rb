@@ -9,11 +9,11 @@ class ApplicationController < ActionController::Base
   end
   # :nocov:
 
-  def after_sign_in_path_for(_resource)
+  def after_sign_in_path_for(resource)
     root_path
   end
 
-  def after_sign_out_path_for(_resource)
+  def after_sign_out_path_for(resource)
     '/users/sign_in' # サインアウト後のリダイレクト先URL
   end
 end
