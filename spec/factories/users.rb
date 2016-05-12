@@ -1,11 +1,12 @@
 FactoryGirl.define do
   factory :user do
+    password = FFaker::Internet.password(8)
     email                 { FFaker::Internet.email }
-    password              '00000000'
-    password_confirmation '00000000'
-    nickname              'abc'
-    first_name            'abc'
-    last_name             'abc'
+    password              password
+    password_confirmation password
+    nickname              { FFaker::Name.name }
+    first_name            { FFaker::Name.first_name }
+    last_name             { FFaker::Name.last_name }
     confirmed_at          { Time.zone.now }
     confirmation_sent_at  { Time.zone.now }
     confirmation_token    '9zdxfHWNyJXDGqKCwNn5'
