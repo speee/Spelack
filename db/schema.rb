@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160510080606) do
+ActiveRecord::Schema.define(version: 20160512072602) do
 
   create_table "channels", force: :cascade do |t|
     t.string   "name",        limit: 190
@@ -77,8 +77,16 @@ ActiveRecord::Schema.define(version: 20160510080606) do
     t.string   "middle_name",            limit: 255, default: ""
     t.string   "last_name",              limit: 255, default: "", null: false
     t.integer  "role",                   limit: 4
+    t.string   "confirmation_token",     limit: 255
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email",      limit: 255
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
+    t.string   "avatar_file_name",       limit: 255
+    t.string   "avatar_content_type",    limit: 255
+    t.integer  "avatar_file_size",       limit: 4
+    t.datetime "avatar_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
