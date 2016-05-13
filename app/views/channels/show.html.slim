@@ -1,5 +1,9 @@
 h1 = @channel.name
 p = @channel.description
 br
+-unless @joind
+  = link_to 'join', join_channel_path
+  br
 = link_to 'edit', edit_channel_path(@channel)
-= link_to '一覧へ戻る', root_path
+br
+= link_to '一覧へ戻る', channels_path
