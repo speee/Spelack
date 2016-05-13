@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # 機能統合した段階で以下の外部キー制約の実装を行う。
-  # has_many :channels
-  # has_many :user_channels
+  has_many :user_channels
+  has_many :channels, through: :user_channels
   # has_many :chats
   # has_many :shared_files
 
