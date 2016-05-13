@@ -1,6 +1,9 @@
 class ChannelsController < ApplicationController
-  before_action :set_channel, only: [:show, :edit, :update, :destroy]
-  before_action :search_channels, only: [:index]
+  before_action :set_channel, only: [:show, :edit, :update, :destroy, :join]
+  before_action :search_channels, only: [:search]
+  before_action :check_joined, only: [:show]
+  before_action :set_channels, only: [:index]
+
 
   def index
   end
@@ -10,8 +13,7 @@ class ChannelsController < ApplicationController
   end
 
   def create
-    @channel = Channel.new(channel_params)
-    if @channel.save
+    if @channel = current_user.channels.create(channel_params)
       redirect_to channel_path(@channel)
     else
       render :new
@@ -33,10 +35,26 @@ class ChannelsController < ApplicationController
     end
   end
 
+  def join
+    @channel.users << current_user
+    redirect_to channel_path(@channel)
+  end
+
+  def search
+  end
+
   private
+
+  def check_joined
+    @joind = @channel.users.exists?(current_user.id)
+  end
 
   def set_channel
     @channel = Channel.friendly.find(params[:id])
+  end
+
+  def set_channels
+    @channels = current_user.channels.without_soft_destroyed
   end
 
   def search_channels
@@ -44,6 +62,6 @@ class ChannelsController < ApplicationController
   end
 
   def channel_params
-    params.require(:channel).permit(:name, :description, :status, :author_id)
+    params.require(:channel).permit(:name, :description, :status).merge(author_id: current_user.id)
   end
 end
