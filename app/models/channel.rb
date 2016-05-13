@@ -1,7 +1,7 @@
 class Channel < ActiveRecord::Base
   extend FriendlyId
   has_many :user_channels
-  has_many :channels, through: :user_channels
+  has_many :users, through: :user_channels
 
   friendly_id :name
   soft_deletable column: :delete_at
