@@ -53,6 +53,7 @@ source 'https://rubygems.org' do
     gem 'poltergeist'
     gem 'rspec-rails'
     gem 'rspec_junit_formatter'
+    gem 'serverspec'
     gem 'simplecov', require: false
     gem 'validation_examples_matcher'
   end
