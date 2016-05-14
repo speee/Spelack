@@ -13,7 +13,8 @@ class ChannelsController < ApplicationController
   end
 
   def create
-    if @channel = current_user.channels.create(channel_params)
+    @channel = current_user.channels.build(channel_params)
+    if @channel.save
       redirect_to channel_path(@channel)
     else
       render :new
@@ -37,7 +38,7 @@ class ChannelsController < ApplicationController
 
   def join
     @channel.users << current_user
-    redirect_to channel_path(@channel)
+    redirect_to channels_path
   end
 
   def search
