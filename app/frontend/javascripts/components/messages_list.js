@@ -101,7 +101,7 @@ export default class MessagesList extends Component {
   }
 
   _getRowHeight (index) {
-    return this._getDatum(index).size
+    return this._getDatum(index).length
   }
 
   _noRowsRenderer () {
@@ -137,6 +137,7 @@ export default class MessagesList extends Component {
       <Message
       text = {datum.text}
       date = {datum.created_at}
+      id = {datum.id}
       />
     )
   }
