@@ -54,7 +54,7 @@ export default class Message extends Component {
   }
   messageDelete () {
   request
-  .del(root + '/message')
+  .del(root + '/messages')
   .send({id:this.props.id})
   .end(function(err, res){
   });
