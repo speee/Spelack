@@ -11,8 +11,9 @@ class ChannelsController < ApplicationController
   end
 
   def create
-    @channel = current_user.channels.build(channel_params)
+    @channel = Channel.new(channel_params)
     if @channel.save
+      current_user.channels << @channel
       redirect_to channel_path(@channel)
     else
       render :new
