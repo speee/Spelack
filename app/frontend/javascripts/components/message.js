@@ -6,7 +6,6 @@ import request from 'superagent';
 var root = 'http://localhost:3000';
 export default class Message extends Component {
   static propTypes = {
-    //name: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
     date: PropTypes.any.isRequired,
     id: PropTypes.any.isRequired,
