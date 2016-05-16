@@ -7,6 +7,7 @@ ja:
 #      already_confirmed: "was already confirmed"
       not_locked: "は凍結されていません"
 #      not_locked: "was not locked"
+      not_saved: "保存に失敗しました。"
 
   devise:
     failure:
