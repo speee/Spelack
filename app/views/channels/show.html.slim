@@ -1,8 +1,8 @@
 h1 = @channel.name
 p = @channel.description
 br
--unless @joind
-  = link_to 'join', join_channel_path
+-unless @joined
+  = link_to 'join', join_channels_path(id: @channel.id)
   br
 = link_to 'edit', edit_channel_path(@channel)
 br
