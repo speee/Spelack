@@ -30,21 +30,6 @@ RSpec.describe ChannelsController do
     specify { expect(assigns(:channels)).to eq channels }
     it_behaves_like 'http_succses', :index
   end
-
-  describe 'GET #search' do
-    let(:channels) { create_list(:channel, 25) }
-    context 'when there is a search word' do
-      before { get :search, query: channels[5].name }
-      specify { expect(assigns(:channels)).to eq [channels[5]] }
-      it_behaves_like 'http_succses', :search
-    end
-
-    context 'when the search word does not exist' do
-      specify { expect(assigns(:channels)).to eq channels }
-      before { get :search }
-      it_behaves_like 'http_succses', :search
-    end
-  end
   describe 'GET #new' do
     before { get :new }
     it_behaves_like 'http_succses', :new

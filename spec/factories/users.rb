@@ -4,7 +4,7 @@ FactoryGirl.define do
     email                 { FFaker::Internet.email }
     password              password
     password_confirmation password
-    nickname              { FFaker::Name.name }
+    nickname              { FFaker::BaconIpsum.characters(15) }
     first_name            { FFaker::Name.first_name }
     last_name             { FFaker::Name.last_name }
     confirmed_at          { Time.zone.now }
