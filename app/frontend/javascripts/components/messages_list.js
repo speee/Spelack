@@ -7,6 +7,8 @@ import shallowCompare from 'react-addons-shallow-compare'
 import { callApi } from '../utils'
 import Message from './message'
 
+var root = 'http://localhost:3000';
+
 export default class MessagesList extends Component {
 
   constructor (props) {
@@ -20,6 +22,7 @@ export default class MessagesList extends Component {
       virtualScrollRowHeight: 60,
       list: []
     }
+    this.deleteMessage = this.deleteMessage.bind(this)
     this.componentDidMount = this.componentDidMount.bind(this)
     this._getRowHeight = this._getRowHeight.bind(this)
     this._noRowsRenderer = this._noRowsRenderer.bind(this)
@@ -70,7 +73,7 @@ export default class MessagesList extends Component {
       virtualScrollRowHeight,
       list
     } = this.state
-    console.log(this.state.list)
+    //console.log(this.state.list)
     return (
         <div>
 
@@ -138,6 +141,7 @@ export default class MessagesList extends Component {
       text = {datum.text}
       date = {datum.created_at}
       id = {datum.id}
+      onDelete = {this.deleteMessage}
       />
     )
   }
@@ -146,5 +150,27 @@ export default class MessagesList extends Component {
     this.setState({
       useDynamicRowHeight: value
     })
+  }
+
+  deleteMessage (id) {
+    console.log('id = '+ id)
+    var hoge =
+    console.log(hoge)
+    this.setState({
+      list: this.state.list.filter((message) => {
+        console.log(message.id !== id)
+        return message.id !== id;
+      }),
+      rowsCount: this.state.list.length-1,
+      scrollToIndex: undefined
+    }, function(){
+      console.log(this.state.list)
+    });
+
+  request
+  .del(root + '/messages/' + id)
+  .end(function(err, res){
+  });
+
   }
 }

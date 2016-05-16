@@ -9,7 +9,8 @@ export default class Message extends Component {
     //name: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
     date: PropTypes.any.isRequired,
-    id: PropTypes.any.isRequired
+    id: PropTypes.any.isRequired,
+    onDelete: PropTypes.func.isRequired
   }
   constructor (props) {
     super(props)
@@ -24,8 +25,8 @@ export default class Message extends Component {
     let message_menu
     if (this.state.hoverd){
       message_menu = <span>
-            <a href = "#" onClick = {::this.messageUpdate}>Edit</a>
-            <a href = "#" onClick = {::this.messageDelete}>Delete</a>
+            <a href = "#" onClick = {::this.onUpdate}>Edit</a>
+            <a href = "#" onClick = {::this._onDelete}>Delete</a>
           </span>
     }
     return (
@@ -41,22 +42,18 @@ export default class Message extends Component {
   }
 
   onMouseEnter () {
-    console.log('enter')
+  //  console.log('enter')
     this.setState({hoverd:true});
   }
 
   onMouseLeave () {
-    console.log('leave')
+//    console.log('leave')
     this.setState({hoverd: false});
   }
-  messageUpdate () {
+  onUpdate () {
     console.log('update')
   }
-  messageDelete () {
-  request
-  .del(root + '/messages')
-  .send({id:this.props.id})
-  .end(function(err, res){
-  });
+  _onDelete () {
+  this.props.onDelete(this.props.id)
   }
 }

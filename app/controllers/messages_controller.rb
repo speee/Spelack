@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+    protect_from_forgery :secret => ["destroy"]
   def index
     @messages = Message.all
   end
@@ -13,9 +14,10 @@ class MessagesController < ApplicationController
     end
   end
 
-  def delete
-    @message = Message.id(params[:id])
+  def destroy
+    @message = Message.find(params[:id])
     @message.destroy
+    head :ok
   end
 
   private
