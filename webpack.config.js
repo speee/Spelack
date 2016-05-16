@@ -1,9 +1,10 @@
 var path = require('path');
 var webpack = require('webpack');
+var glob = require('glob')
 
 var config = module.exports = {
   context: __dirname,
-  entry: './app/frontend/javascripts/index.js',
+  entry: glob.sync('./app/frontend/javascripts/**/*.js'),
 };
 config.output = {
   path: path.join(__dirname, 'app', 'assets', 'javascripts', 'bundle'),
