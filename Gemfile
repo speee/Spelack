@@ -60,7 +60,7 @@ source 'https://rubygems.org' do
     gem 'validation_examples_matcher'
   end
 
-  group :production do
+  group :staging, :production do
     gem 'unicorn', '~> 4.9.0'
   end
 end
