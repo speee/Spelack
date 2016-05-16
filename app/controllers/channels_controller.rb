@@ -1,9 +1,7 @@
 class ChannelsController < ApplicationController
   before_action :set_channel, only: [:show, :edit, :update, :destroy, :join]
-  before_action :search_channels, only: [:search]
   before_action :check_joined, only: [:show]
   before_action :set_channels, only: [:index]
-
 
   def index
   end
@@ -36,18 +34,13 @@ class ChannelsController < ApplicationController
     end
   end
 
-  def join
-    @channel.users << current_user
-    redirect_to channels_path
-  end
-
   def search
   end
 
   private
 
   def check_joined
-    @joind = @channel.users.exists?(current_user.id)
+    @joined = @channel.users.exists?(current_user.id)
   end
 
   def set_channel
@@ -56,10 +49,6 @@ class ChannelsController < ApplicationController
 
   def set_channels
     @channels = current_user.channels.without_soft_destroyed
-  end
-
-  def search_channels
-    @channels = Channel.search(params[:query])
   end
 
   def channel_params
