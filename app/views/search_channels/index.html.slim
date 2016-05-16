@@ -1,10 +1,5 @@
-h1 Channel List
-
+== render 'search_form'
 br
-
-= link_to 'Search channels', search_channels_path
-br
-
 table
   tbody
     - @channels.each do |channel|
@@ -12,5 +7,3 @@ table
         td = link_to channel.name, channel
         td = link_to '削除', channel, method: :delete
 br
-
-= link_to 'Add channel', new_channel_path
