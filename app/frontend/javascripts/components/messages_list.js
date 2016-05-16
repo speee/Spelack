@@ -34,11 +34,11 @@ export default class MessagesList extends Component {
     this._updateUseDynamicRowHeight = this._updateUseDynamicRowHeight.bind(this)
   }
   componentDidMount () {
-    console.log('didmount')
     callApi('messages/index')
     .then(
       (obj) => {
-        this.setState({ list:obj,
+        this.setState({
+          list:obj,
           rowsCount:obj.length
         })
       }
@@ -75,24 +75,21 @@ export default class MessagesList extends Component {
       virtualScrollRowHeight,
       list
     } = this.state
-    //console.log(this.state.list)
     return (
-        <div>
-
-              <VirtualScroll
-                ref='VirtualScroll'
-                className='VirtualScroll'
-                height={virtualScrollHeight}
-                overscanRowsCount={overscanRowsCount}
-                noRowsRenderer={this._noRowsRenderer}
-                rowsCount={rowsCount}
-                rowHeight={useDynamicRowHeight ? this._getRowHeight : virtualScrollRowHeight}
-                rowRenderer={this._rowRenderer}
-                scrollToIndex={scrollToIndex}
-                width={600}
-              />
-
-        </div>
+      <div>
+        <VirtualScroll
+          ref='VirtualScroll'
+          className='VirtualScroll'
+          height={virtualScrollHeight}
+          overscanRowsCount={overscanRowsCount}
+          noRowsRenderer={this._noRowsRenderer}
+          rowsCount={rowsCount}
+          rowHeight={useDynamicRowHeight ? this._getRowHeight : virtualScrollRowHeight}
+          rowRenderer={this._rowRenderer}
+          scrollToIndex={scrollToIndex}
+          width={600}
+        />
+      </div>
     )
   }
 
@@ -184,14 +181,14 @@ export default class MessagesList extends Component {
   var listed = this.state.list
   listed[index].text = text
   this.setState({
-      list: listed,
-      scrollToIndex: Number(index)
-    });
+    list: listed,
+    scrollToIndex: Number(index)
+  });
 
   request
-  .put(root + '/messages/' + id)
-  .send({text: text})
-  .end(function(err, res){
-  });
+    .put(root + '/messages/' + id)
+    .send({text: text})
+    .end(function(err, res){
+    });
   }
 }
