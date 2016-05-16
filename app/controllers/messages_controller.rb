@@ -14,6 +14,12 @@ class MessagesController < ApplicationController
     end
   end
 
+  def update
+    @message = Message.find(params[:id])
+    @message.update_attribute(:text, params[:text])
+    head :ok
+  end
+
   def destroy
     @message = Message.find(params[:id])
     @message.destroy

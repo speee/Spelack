@@ -22,6 +22,8 @@ export default class MessagesList extends Component {
       virtualScrollRowHeight: 60,
       list: []
     }
+    this.getIndex = this.getIndex.bind(this)
+    this.editMessage = this.editMessage.bind(this)
     this.deleteMessage = this.deleteMessage.bind(this)
     this.componentDidMount = this.componentDidMount.bind(this)
     this._getRowHeight = this._getRowHeight.bind(this)
@@ -142,6 +144,7 @@ export default class MessagesList extends Component {
       date = {datum.created_at}
       id = {datum.id}
       onDelete = {this.deleteMessage}
+      onEdit = {this.editMessage}
       />
     )
   }
@@ -153,18 +156,12 @@ export default class MessagesList extends Component {
   }
 
   deleteMessage (id) {
-    console.log('id = '+ id)
-    var hoge =
-    console.log(hoge)
     this.setState({
       list: this.state.list.filter((message) => {
-        console.log(message.id !== id)
         return message.id !== id;
       }),
       rowsCount: this.state.list.length-1,
       scrollToIndex: undefined
-    }, function(){
-      console.log(this.state.list)
     });
 
   request
@@ -172,5 +169,29 @@ export default class MessagesList extends Component {
   .end(function(err, res){
   });
 
+  }
+
+  getIndex (id) {
+    var list = this.state.list
+    var result = Object.keys(list).filter( (k) => {
+     return list[k].id == id
+   })[0];
+    return result
+  }
+
+  editMessage (id,text) {
+  var index = this.getIndex(id)
+  var listed = this.state.list
+  listed[index].text = text
+  this.setState({
+      list: listed,
+      scrollToIndex: Number(index)
+    });
+
+  request
+  .put(root + '/messages/' + id)
+  .send({text: text})
+  .end(function(err, res){
+  });
   }
 }
