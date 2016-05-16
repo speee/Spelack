@@ -16,7 +16,7 @@ export default class Message extends Component {
     super(props)
 
     this.state = {
-      hoverd: false,
+      hovered: false,
       edit: false
     }
   }
@@ -48,11 +48,11 @@ export default class Message extends Component {
   }
 
   onMouseEnter () {
-    this.setState({hoverd:true});
+    this.setState({hovered:true});
   }
 
   onMouseLeave () {
-    this.setState({hoverd: false});
+    this.setState({hovered: false});
   }
 
   _onUpdate () {
