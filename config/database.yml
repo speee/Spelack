@@ -19,7 +19,7 @@ test:
 
 staging:
   <<: *default
-  database: spelack_staging
+  database: <%= ENV['DATABASE_NAME'] %>
 
 production:
   <<: *default

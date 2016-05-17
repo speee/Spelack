@@ -1,7 +1,6 @@
 require 'capistrano/setup'
 require 'capistrano/deploy'
 require 'capistrano/rbenv'
-require 'capistrano/nvm'
 require 'capistrano/npm'
 require 'capistrano/gulp'
 require 'capistrano/bundler'
