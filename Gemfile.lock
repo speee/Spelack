@@ -203,7 +203,6 @@ GEM
     jwt (1.5.4)
     kakurenbo-puti (0.1.0)
       activerecord (>= 4.1.0)
-    kgio (2.10.0)
     launchy (2.4.3)
       addressable (~> 2.3)
     letter_opener (1.4.1)
@@ -303,7 +302,6 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rainbow (2.1.0)
-    raindrops (0.16.0)
     rake (11.1.2)
     react-rails (1.7.1)
       babel-transpiler (>= 0.7.0)
@@ -403,10 +401,6 @@ GEM
     uglifier (3.0.0)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (1.0.5)
-    unicorn (4.9.0)
-      kgio (~> 2.6)
-      rack
-      raindrops (~> 0.7)
     uniform_notifier (1.9.0)
     validation_examples_matcher (1.0.1)
       rspec-expectations (~> 3.0)
@@ -478,7 +472,6 @@ DEPENDENCIES
   simplecov!
   slim-rails!
   uglifier!
-  unicorn (~> 4.9.0)!
   validation_examples_matcher!
   web-console (~> 2.0)!
   yard!

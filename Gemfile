@@ -6,7 +6,6 @@ source 'https://rubygems.org' do
   gem 'carrierwave'
   gem 'coffee-rails'
   gem 'devise'
-  gem 'eventmachine', '1.2.0.1'
   gem 'friendly_id', '~> 5.1.0'
   gem 'gem_sort'
   gem 'google-api-client'
@@ -62,6 +61,6 @@ source 'https://rubygems.org' do
   end
 
   group :staging, :production do
-    gem 'unicorn', '~> 4.9.0'
+    gem 'eventmachine', '1.2.0.1'
   end
 end
