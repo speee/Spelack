@@ -14,7 +14,7 @@ source 'https://rubygems.org' do
   gem 'jquery-rails'
   gem 'kakurenbo-puti'
   gem 'link_thumbnailer'
-  gem 'mysql2', '~> 0.3.20'
+  gem 'mysql2', '~> 0.3.21'
   gem 'paperclip'
   gem 'puma'
   gem 'rails', '4.2.4'

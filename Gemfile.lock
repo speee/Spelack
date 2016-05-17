@@ -456,7 +456,7 @@ DEPENDENCIES
   letter_opener!
   letter_opener_web!
   link_thumbnailer!
-  mysql2 (~> 0.3.20)!
+  mysql2 (~> 0.3.21)!
   paperclip!
   poltergeist!
   pry-byebug!
