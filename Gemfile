@@ -32,6 +32,7 @@ source 'https://rubygems.org' do
     gem 'capistrano-bundler'
     gem 'capistrano-gulp'
     gem 'capistrano-npm'
+    gem 'capistrano-nvm'
     gem 'capistrano-rails'
     gem 'capistrano-rbenv'
     gem 'capistrano3-puma'

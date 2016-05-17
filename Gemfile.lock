@@ -89,6 +89,8 @@ GEM
     capistrano-harrow (0.5.1)
     capistrano-npm (1.0.2)
       capistrano (>= 3.0.0)
+    capistrano-nvm (0.0.6)
+      capistrano (~> 3.1)
     capistrano-rails (1.1.6)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
@@ -439,6 +441,7 @@ DEPENDENCIES
   capistrano-bundler!
   capistrano-gulp!
   capistrano-npm!
+  capistrano-nvm!
   capistrano-rails!
   capistrano-rbenv!
   capistrano3-puma!
