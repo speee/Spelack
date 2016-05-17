@@ -57,7 +57,6 @@ export default class MessagesList extends Component {
   }
 
   updateMessage(message) {
-    console.log(message)
     this.setState({
       list: this.state.list.concat(JSON.parse(message)),
       rowsCount: this.state.rowsCount + 1,
@@ -139,7 +138,7 @@ export default class MessagesList extends Component {
       <Message
       text = {datum.text}
       date = {datum.created_at}
-      id = {datum.id}
+      name = {datum.nickname}
       onDelete = {this.deleteMessage}
       onEdit = {this.editMessage}
       />

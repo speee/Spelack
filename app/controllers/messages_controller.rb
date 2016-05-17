@@ -7,6 +7,7 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.new(message_params)
+    @message.user_id = current_user.id
     if @message.save
       MessageBroadcastJob.perform_later(@message)
       head :ok

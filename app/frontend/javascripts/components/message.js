@@ -8,7 +8,7 @@ export default class Message extends Component {
   static propTypes = {
     text: PropTypes.string.isRequired,
     date: PropTypes.any.isRequired,
-    id: PropTypes.any.isRequired,
+    name: PropTypes.string.isRequired,
     onDelete: PropTypes.func.isRequired,
     onEdit: PropTypes.func.isRequired
   }
@@ -37,7 +37,7 @@ export default class Message extends Component {
     }
     return (
       <div className = 'row'　onMouseEnter={::this.onMouseEnter} onMouseLeave = {::this.onMouseLeave}>
-        <span className = 'name'>{this.props.id}</span>
+        <span className = 'name'>{this.props.name}</span>
         <span className = 'date'>{this.props.date}</span>
         <span>{message_menu}</span>
         <div>
