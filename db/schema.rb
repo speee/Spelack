@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(version: 20160512072602) do
 
   create_table "channels", force: :cascade do |t|
-    t.string   "name",        limit: 190
+    t.string   "name",        limit: 190,             null: false
     t.integer  "status",      limit: 4,   default: 0, null: false
     t.string   "description", limit: 255
     t.integer  "author_id",   limit: 4
@@ -25,14 +25,6 @@ ActiveRecord::Schema.define(version: 20160512072602) do
 
   add_index "channels", ["delete_at"], name: "index_channels_on_delete_at", using: :btree
   add_index "channels", ["name"], name: "index_channels_on_name", unique: true, using: :btree
-
-  create_table "chats", force: :cascade do |t|
-    t.text     "text",       limit: 65535
-    t.integer  "user_id",    limit: 4
-    t.integer  "channel_id", limit: 4
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-  end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",           limit: 190, null: false
@@ -46,6 +38,14 @@ ActiveRecord::Schema.define(version: 20160512072602) do
   add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+
+  create_table "messages", force: :cascade do |t|
+    t.text     "text",       limit: 65535
+    t.integer  "user_id",    limit: 4
+    t.integer  "channel_id", limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
 
   create_table "shared_files", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
@@ -77,10 +77,6 @@ ActiveRecord::Schema.define(version: 20160512072602) do
     t.string   "middle_name",            limit: 255, default: ""
     t.string   "last_name",              limit: 255, default: "", null: false
     t.integer  "role",                   limit: 4
-    t.string   "confirmation_token",     limit: 255
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email",      limit: 255
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
     t.string   "avatar_file_name",       limit: 255
