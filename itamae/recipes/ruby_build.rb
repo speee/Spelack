@@ -1,10 +1,3 @@
-package 'epel-release'
-package 'gcc'
-package 'openssl-devel'
-package 'libyaml-devel'
-package 'readline-devel'
-package 'zlib-devel'
-package 'git'
 
 RBENV_DIR = '/home/spelack-dev/.rbenv/'.freeze
 RBENV_SCRIPT = '/etc/profile.d/rbenv.sh'.freeze
