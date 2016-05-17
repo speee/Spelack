@@ -23,7 +23,7 @@ export default class Message extends Component {
   render () {
     let message_menu
     let main_content = <span className = 'text'>{this.props.text}</span>
-    if (this.state.hoverd){
+    if (this.state.hovered){
       message_menu = <span>
             <a href = "#" onClick = {::this._onUpdate}>Edit</a>
             <a href = "#" onClick = {::this._onDelete}>Delete</a>
