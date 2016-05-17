@@ -1,1 +1,1 @@
-source /home/spelack-dev/.nvm/nvm.sh
+source /usr/local/nvm/nvm.sh

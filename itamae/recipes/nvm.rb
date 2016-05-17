@@ -1,4 +1,4 @@
-NVM_DIR = '/home/spelack-dev/.nvm/'.freeze
+NVM_DIR = '/usr/local/nvm'.freeze
 NVM_SCRIPT = '/etc/profile.d/nvm.sh'.freeze
 
 git NVM_DIR do
