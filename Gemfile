@@ -30,6 +30,8 @@ source 'https://rubygems.org' do
   group :development do
     gem 'capistrano'
     gem 'capistrano-bundler'
+    gem 'capistrano-gulp'
+    gem 'capistrano-npm'
     gem 'capistrano-rails'
     gem 'capistrano-rbenv'
     gem 'capistrano3-puma'
