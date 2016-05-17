@@ -23,5 +23,7 @@ module NewGradRubyChallenge
     config.active_record.default_timezone = :local
     config.i18n.default_locale = :ja
     config.active_record.raise_in_transactional_callbacks = true
+    config.autoload_paths += %W(#{config.root}/app/channels)
+    config.assets.precompile += ['*.js']
   end
 end
