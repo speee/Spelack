@@ -448,7 +448,7 @@ DEPENDENCIES
   coffee-rails!
   database_rewinder!
   devise!
-  eventmachine!
+  eventmachine (= 1.2.0.1)!
   factory_girl_rails!
   ffaker!
   friendly_id (~> 5.1.0)!
