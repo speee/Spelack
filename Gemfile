@@ -6,6 +6,7 @@ source 'https://rubygems.org' do
   gem 'carrierwave'
   gem 'coffee-rails'
   gem 'devise'
+  gem 'eventmachine'
   gem 'friendly_id', '~> 5.1.0'
   gem 'gem_sort'
   gem 'google-api-client'
