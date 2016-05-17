@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   root 'users#index'
+  namespace 'api' do
+    get 'messages/index'
+    resources :messages, only: :index
+  end
   devise_for :users
   resources :channels
   resources :messages, only: %i(index create)

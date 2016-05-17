@@ -3,7 +3,6 @@ class MessageBroadcastJob < ActiveJob::Base
 
   def perform(message)
     ActionCable.server.broadcast 'messages',
-      body: message.text,
-      username: message.user_id
+      message.to_json
   end
 end
