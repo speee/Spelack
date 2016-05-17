@@ -5,7 +5,6 @@ import 'react-virtualized/styles.css'; // only needs to be imported once
 import request from 'superagent';
 import shallowCompare from 'react-addons-shallow-compare'
 import { callApi } from '../utils'
-import Message from './message'
 
 var root = 'http://localhost:3000';
 
