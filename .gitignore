@@ -186,3 +186,9 @@ dump.rdb
 /app/assets/javascripts/bundle/*
 # for npm
 /node_modules
+
+# Ignore views_mock
+/app/views_mock
+
+# Ignore views_mock
+/public/system/users/avatars
