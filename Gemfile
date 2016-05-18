@@ -33,6 +33,7 @@ source 'https://rubygems.org' do
     gem 'capistrano-rails'
     gem 'capistrano-rbenv'
     gem 'capistrano3-puma'
+    gem 'itamae'
     gem 'letter_opener'
     gem 'letter_opener_web'
     gem 'web-console', '~> 2.0'
@@ -56,6 +57,7 @@ source 'https://rubygems.org' do
     gem 'database_rewinder'
     gem 'rspec-rails'
     gem 'rspec_junit_formatter'
+    gem 'serverspec'
     gem 'simplecov', require: false
     gem 'validation_examples_matcher'
   end
