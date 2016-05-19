@@ -5,13 +5,13 @@ class Api::MessagesController < ApplicationController
   end
 
   def show
-    messages = Message.where(channel_id: params[:channel_id])
+    messages = Message.where(message_params)
     render json: messages.to_json(methods: :nickname)
   end
 
   private
 
   def message_params
-    params.require(:message).permit(:text, :channel_id, :user_id)
+    params.permit(:text, :channel_id, :user_id)
   end
 end
