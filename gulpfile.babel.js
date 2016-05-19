@@ -26,4 +26,10 @@ gulp.task('watch', function () {
     gulp.watch("./app/views/**/*.html*",   ['webpack']);
 });
 
+gulp.task('deploy', () => {
+  gulp.src('app/assets/javascripts/**/*.js')
+    .pipe(webpack(webpackConfig))
+    .pipe(gulp.dest(webpackConfig.output.path))
+});
+
 gulp.task('default', ['webpack', 'watch', 'browser-sync']);
