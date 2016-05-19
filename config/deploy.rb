@@ -41,5 +41,16 @@ namespace :gulp do
     end
   end
 end
+namespace :puma do
+  task :cable do
+    on roles(:web) do
+      within current_path do
+        execute :bundle, :exec, :puma, '-d -p 28080 cable/config.ru'
+      end
+    end
+  end
+end
+
 after 'puma:restart', 'gulp:deploy'
+after 'gulp:deploy', 'puma:cable'
 after 'deploy:publishing', 'deploy:restart'
