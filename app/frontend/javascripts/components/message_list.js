@@ -68,7 +68,8 @@ export default class MessageList extends Component {
       (err, res) => {
         this.setState({
           list:JSON.parse(res.text),
-          rowsCount:JSON.parse(res.text).length
+          rowsCount:JSON.parse(res.text).length,
+          scrollToIndex:JSON.parse(res.text).length-1
         })
       }
     );

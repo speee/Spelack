@@ -22,5 +22,6 @@ export default class Channel extends Component {
 
   __setChannel () {
   this.props._setChannel(this.props.id)
+  return false
   }
 }
