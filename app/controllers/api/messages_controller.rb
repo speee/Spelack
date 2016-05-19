@@ -5,7 +5,7 @@ class Api::MessagesController < ApplicationController
   end
 
   def show
-    messages = Message.where(message_params)
+    messages = Message.where(message_params).includes(:user)
     render json: messages.to_json(methods: :nickname)
   end
 
