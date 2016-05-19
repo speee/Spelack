@@ -26,5 +26,6 @@ module NewGradRubyChallenge
     config.autoload_paths += %W(#{config.root}/app/channels)
     config.assets.precompile += ['*.js']
     config.assets.paths << "#{Rails}/assets/fonts"
+    # config.assets.paths << "#{Rails}/assets/fonts"
   end
 end
