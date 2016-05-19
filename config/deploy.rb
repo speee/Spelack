@@ -3,14 +3,21 @@ lock '3.5.0'
 
 set :application, 'Spelack'
 set :repo_url, 'git@github.com:MKenta/Spelack.git'
-set :branch, 'deploy_test'
+set :branch, 'add_staging'
 set :deploy_to, '/var/www/Spelack'
 set :log_level, :debug
 set :rbenv_type, :user
 set :rbenv_ruby, '2.2.3'
-
+set :npm_target_path, -> { release_path }
+set :npm_flags, ''
+set :nvm_type, :user
+set :nvm_node, 'v5.10.1'
+set :nvm_custom_path, '/usr/local/nvm'
+set :npm_roles, :all
+set :npm_env_variables, {}
 set :linked_dirs, %w(bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/assets)
 set :rbenv_ruby, '2.2.3'
+
 
 namespace :deploy do
   desc 'Create database'
@@ -24,4 +31,5 @@ namespace :deploy do
     end
   end
 end
+
 after 'deploy:publishing', 'deploy:restart'
