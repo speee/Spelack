@@ -4,7 +4,7 @@ production: &production
   :port: 6379
   :timeout: 1
 staging: &staging
-  :url: redis://spelackec-003.apvows.0001.apne1.cache.amazonaws.com:6379
+  :url: redis://spelackec-001.apvows.0001.apne1.cache.amazonaws.com:6379
   :host: localhost
   :port: 6379
   :timeout: 1
