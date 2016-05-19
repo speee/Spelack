@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   namespace 'api' do
     get 'messages/index'
     resources :messages, only: :index
+    get 'channels/index'
+    resources :channels, only: :index
+    resources :users, only: :index
   end
   devise_for :users
   resources :channels
