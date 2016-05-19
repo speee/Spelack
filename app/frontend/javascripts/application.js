@@ -31,12 +31,11 @@ export default class Application extends Component {
   }
   componentDidUpdate(nextProps, nextState) {
     if (this.state.selected){
-        ReactDOM.render(
-          <MessagesList
-        channel_id = {this.state.selected}
-      />,document.getElementById('messages')
+      ReactDOM.render(
+        <MessagesList
+          channel_id = {this.state.selected}
+        />,document.getElementById('messages')
       );
     }
-
   }
 }
