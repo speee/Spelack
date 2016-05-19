@@ -37,8 +37,6 @@ export default class Application extends Component {
         channel_id = {this.state.selected}
       />,document.getElementById('messages')
       );
-//ReactDOM.unmountComponentAtNode('messages')
-
     }
 
   }

@@ -25,10 +25,12 @@ export default class MessagesList extends Component {
       virtualScrollRowHeight: 60,
       list: []
     }
+    this.setList = this.setList.bind(this)
     this.getIndex = this.getIndex.bind(this)
     this.editMessage = this.editMessage.bind(this)
     this.deleteMessage = this.deleteMessage.bind(this)
     this.componentDidMount = this.componentDidMount.bind(this)
+    this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this)
     this._getRowHeight = this._getRowHeight.bind(this)
     this._noRowsRenderer = this._noRowsRenderer.bind(this)
     this._onRowsCountChange = this._onRowsCountChange.bind(this)
@@ -37,19 +39,10 @@ export default class MessagesList extends Component {
     this._updateUseDynamicRowHeight = this._updateUseDynamicRowHeight.bind(this)
   }
   componentDidMount () {
-    callApi('messages/index')
-    .then(
-      (obj) => {
-        this.setState({
-          list:obj,
-          rowsCount:obj.length
-        })
-      }
-    ).catch(
-      (err) => { console.error(err); }
-    );
+    this.setList(this.props.channel_id)
     this.setupSubscription()
   }
+
   setupSubscription() {
     App.cable.subscriptions.create('MessagesChannel', {
       received(message) {
@@ -57,6 +50,20 @@ export default class MessagesList extends Component {
       },
       updateMessage: this.updateMessage.bind(this)
     })
+  }
+
+  setList (channel_id) {
+    request
+    .get(root + '/api/messages/show')
+    .query({channel_id: channel_id})
+    .end(
+      (err, res) => {
+        this.setState({
+          list:JSON.parse(res.text),
+          rowsCount:JSON.parse(res.text).length
+        })
+      }
+    );
   }
 
   updateMessage(message) {
@@ -95,6 +102,10 @@ export default class MessagesList extends Component {
 
   shouldComponentUpdate (nextProps, nextState) {
     return shallowCompare(this, nextProps, nextState)
+  }
+
+  componentWillReceiveProps (nextProps) {
+    this.setList(nextProps.channel_id)
   }
 
   _getDatum (index) {
