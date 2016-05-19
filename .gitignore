@@ -192,3 +192,6 @@ dump.rdb
 
 # Ignore views_mock
 /public/system/users/avatars
+
+# Ignore /public/assets/
+/public/assets/
