@@ -25,7 +25,6 @@ export default class Application extends Component {
   }
 
   setChannel (channel_id) {
-    console.log(channel_id)
     this.setState({
       selected: channel_id
     })

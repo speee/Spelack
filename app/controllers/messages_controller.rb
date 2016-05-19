@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
-  protect_from_forgery secret: :destroy
+  protect_from_forgery secret: [:destroy, :create]
+  skip_before_filter :verify_authenticity_token, only: [:create]
 
   def index
     @messages = Message.all
@@ -8,6 +9,7 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     @message.user_id = current_user.id
+
     if @message.save
       MessageBroadcastJob.perform_later(@message)
       head :ok

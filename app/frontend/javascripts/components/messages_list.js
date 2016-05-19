@@ -6,6 +6,7 @@ import request from 'superagent';
 import shallowCompare from 'react-addons-shallow-compare'
 import { callApi } from '../utils'
 import Message from './message'
+import MessageForm from './message_form'
 var root = 'http://localhost:3000';
 
 export default class MessagesList extends Component {
@@ -25,6 +26,8 @@ export default class MessagesList extends Component {
       virtualScrollRowHeight: 60,
       list: []
     }
+
+    this.onPost = this.onPost.bind(this)
     this.setList = this.setList.bind(this)
     this.getIndex = this.getIndex.bind(this)
     this.editMessage = this.editMessage.bind(this)
@@ -41,6 +44,11 @@ export default class MessagesList extends Component {
   componentDidMount () {
     this.setList(this.props.channel_id)
     this.setupSubscription()
+    ReactDOM.render(
+          <MessageForm
+        onPost = {this.onPost}
+      />,document.getElementById('messageform')
+      );
   }
 
   setupSubscription() {
@@ -67,11 +75,13 @@ export default class MessagesList extends Component {
   }
 
   updateMessage(message) {
-    this.setState({
-      list: this.state.list.concat(JSON.parse(message)),
-      rowsCount: this.state.rowsCount + 1,
-      scrollToIndex: this.state.rowsCount
-    })
+    if(JSON.parse(message).channel_id == this.props.channel_id){
+      this.setState({
+        list: this.state.list.concat(JSON.parse(message)),
+        rowsCount: this.state.rowsCount + 1,
+        scrollToIndex: this.state.rowsCount
+      })
+    }
   }
 
   render () {
@@ -200,6 +210,14 @@ export default class MessagesList extends Component {
   request
     .put(root + '/messages/' + id)
     .send({text: text})
+    .end(function(err, res){
+    });
+  }
+
+  onPost (text) {
+    request
+    .post(root + '/messages/')
+    .send({text: text,channel_id: this.props.channel_id})
     .end(function(err, res){
     });
   }
