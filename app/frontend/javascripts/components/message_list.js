@@ -9,7 +9,7 @@ import Message from './message'
 import MessageForm from './message_form'
 var root = 'http://localhost:3000';
 
-export default class MessagesList extends Component {
+export default class MessageList extends Component {
     static propTypes = {
     channel_id: PropTypes.number.isRequired
   }

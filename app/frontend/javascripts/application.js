@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import request from 'superagent';
-import MessagesList from './components/messages_list'
-import ChannelsList from './components/channels_list'
+import MessageList from './components/message_list'
+import ChannelList from './components/channel_list'
 
 var root = 'http://localhost:3000';
 export default class Application extends Component {
@@ -16,7 +16,7 @@ export default class Application extends Component {
   render () {
     return (
       <div>
-        <ChannelsList
+        <ChannelList
         setChannel = {::this.setChannel}
         />
         {this.state.message_list}
@@ -32,7 +32,7 @@ export default class Application extends Component {
   componentDidUpdate(nextProps, nextState) {
     if (this.state.selected){
       ReactDOM.render(
-        <MessagesList
+        <MessageList
           channel_id = {this.state.selected}
         />,document.getElementById('messages')
       );

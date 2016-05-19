@@ -5,12 +5,11 @@ import 'react-virtualized/styles.css'; // only needs to be imported once
 import request from 'superagent';
 import shallowCompare from 'react-addons-shallow-compare'
 import { callApi } from '../utils'
-import MessagesList from './messages_list'
 import Channel from './channel'
 
 var root = 'http://localhost:3000';
 
-export default class ChannelsList extends Component {
+export default class ChannelList extends Component {
   static propTypes = {
     setChannel: PropTypes.func.isRequired
   }
