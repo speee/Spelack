@@ -32,4 +32,14 @@ namespace :deploy do
   end
 end
 
+namespace :gulp do
+  task :deploy do
+    on roles(:web) do
+      within current_path do
+        execute './node_modules/.bin/gulp', 'deploy'
+      end
+    end
+  end
+end
+after 'puma:restart', 'gulp:deploy'
 after 'deploy:publishing', 'deploy:restart'
