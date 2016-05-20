@@ -25,8 +25,8 @@ export default class Message extends Component {
     let main_content = <span className = 'text'>{this.props.text}</span>
     if (this.state.hovered){
       message_menu = <span>
-            <a href = "#" onClick = {::this._onUpdate}>Edit</a>
-            <a href = "#" onClick = {::this._onDelete}>Delete</a>
+            <button type="button" onClick = {::this._onUpdate}>Edit</button>
+            <button type="button" href = "#" onClick = {::this._onDelete}>Delete</button>
           </span>
     }
     if (this.state.edit){

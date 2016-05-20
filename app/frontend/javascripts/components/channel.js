@@ -15,7 +15,7 @@ export default class Channel extends Component {
   render () {
     return (
       <div>
-        <a href="#" onClick={::this.__setChannel}>{this.props.name}</a>
+        <button type="button" href="#" onClick={::this.__setChannel}>{this.props.name}</button>
       </div>
       )
   }
