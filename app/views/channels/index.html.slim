@@ -56,24 +56,26 @@ javascript:
       .container-fluid
         .row
           .col-md-12
-            .ts-message
-              .message_gutter
-                .message_icon
-                  a.member_preview_link.member_image.thumb_36 href="#" target="#" data-member-id="U0ELMFUJG" data-thumb-size="36" style="background-image: url('/images/default_avatar.png')" aria-hidden="true"
-              .message_content
-                a.nickname[href="#" target="#" data-member-id="U0ELMFUJG"]
-                  | nick.name
-                span.transmission_time
-                  | 3:40 PM
-                span.message_body
-                  | こんにちは!!!
+            #messages
+            / .ts-message
+            /   .message_gutter
+            /     .message_icon
+            /       a.member_preview_link.member_image.thumb_36 href="#" target="#" data-member-id="U0ELMFUJG" data-thumb-size="36" style="background-image: url('/images/default_avatar.png')" aria-hidden="true"
+            /   .message_content
+            /     a.nickname[href="#" target="#" data-member-id="U0ELMFUJG"]
+            /       | nick.name
+            /     span.transmission_time
+            /       | 3:40 PM
+            /     span.message_body
+            /       | こんにちは!!!
     footer[style="bottom: 0px;"]
       #footer_overlay.onboarding_overlay.hidden
       #footer_msgs
         #msg_preview.hidden.lato_regular
           #msg_preview_msg.message
         #messages-input-container[style="height: 42px;"]
-          form#message-form[onsubmit=""]
-            textarea#message-input.with-emoji-menu maxlength="" aria-label="Message input for Private Channel spelack" autocorrect="off" autocomplete="off" spellcheck="true" onkeyup='this.rows = (this.value.split("\n").length||1);'
-            button#primary_send_button[type="submit"]
-              span.glyphicon.glyphicon-send[aria-hidden="true"]
+          #messageform
+          / form#message-form[onsubmit=""]
+          /   textarea#message-input.with-emoji-menu maxlength="" aria-label="Message input for Private Channel spelack" autocorrect="off" autocomplete="off" spellcheck="true" onkeyup='this.rows = (this.value.split("\n").length||1);'
+          /   button#primary_send_button[type="submit"]
+          /     span.glyphicon.glyphicon-send[aria-hidden="true"]

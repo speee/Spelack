@@ -36,12 +36,18 @@ export default class Message extends Component {
       </span>
     }
     return (
-      <div className = 'row' onMouseEnter={::this.onMouseEnter} onMouseLeave = {::this.onMouseLeave}>
-        <span className = 'name'>{this.props.name}</span>
-        <span className = 'date'>{this.props.date}</span>
-        <span>{message_menu}</span>
-        <div>
-          {main_content}
+      <div className = 'ts-message' onMouseEnter={::this.onMouseEnter} onMouseLeave = {::this.onMouseLeave}>
+        <div className='message_gutter'>
+            <div className='message_icon'>
+            </div>
+          </div>
+        <div className = 'message_content'>
+          <span className = 'nickname'>{this.props.name}</span>
+          <span className = 'transmission_time'>{this.props.date}</span>
+          <span>{message_menu}</span>
+          <div className = 'message_body'>
+            {main_content}
+          </div>
         </div>
       </div>
       )

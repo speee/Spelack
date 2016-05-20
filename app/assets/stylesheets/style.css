@@ -739,15 +739,10 @@ li {
 }
 .ts-sidebar-menu .open > a {
   background: rgba(51, 56, 62, 0.35);
-  /*font-weight: bold;*/
 }
-/*.ts-sidebar-menu .open > a:hover {
-  background-color: #000;
-}*/
+
 .ts-sidebar-menu > .open > a {
-  /*background: #33383e;*/
   background: #37a6c4;
-  /*border-left: 5px solid #37a6c4;*/
 }
 .ts-sidebar-menu .open > .more i {
   transform: rotate(180deg);
