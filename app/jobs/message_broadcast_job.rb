@@ -3,6 +3,6 @@ class MessageBroadcastJob < ActiveJob::Base
 
   def perform(message)
     ActionCable.server.broadcast 'messages',
-      message.to_json
+      message.to_json(methods: :nickname)
   end
 end

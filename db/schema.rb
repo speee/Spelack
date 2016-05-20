@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(version: 20160512072602) do
 
   create_table "channels", force: :cascade do |t|
-    t.string   "name",        limit: 190,             null: false
+    t.string   "name",        limit: 190
     t.integer  "status",      limit: 4,   default: 0, null: false
     t.string   "description", limit: 255
     t.integer  "author_id",   limit: 4
@@ -77,6 +77,10 @@ ActiveRecord::Schema.define(version: 20160512072602) do
     t.string   "middle_name",            limit: 255, default: ""
     t.string   "last_name",              limit: 255, default: "", null: false
     t.integer  "role",                   limit: 4
+    t.string   "confirmation_token",     limit: 255
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email",      limit: 255
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
     t.string   "avatar_file_name",       limit: 255
