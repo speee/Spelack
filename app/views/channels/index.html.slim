@@ -1,16 +1,81 @@
-h1 Channel List
-
-br
-
-= link_to 'Search channels', search_channels_path
-br
-
-table
-  tbody
-    - @channels.each do |channel|
-      tr
-        td = link_to channel.name, channel
-        td = link_to '削除', channel, method: :delete
-br
-
-= link_to 'Add channel', new_channel_path
+.no_attachment_max_width.light_theme
+  header.brand.clearfix
+    span.menu-btn
+      i.fa.fa-bars
+    ul.ts-profile-nav
+      li.ts-account
+        a href="#"
+          img.ts-avatar.hidden-side src="/images/default_avatar.png" alt=""
+          |  Account
+          i.fa.fa-angle-down.hidden-side
+        ul
+          li
+            = link_to 'My Account', '#'
+          li
+            = link_to 'Edit Account', '#'
+          li
+            = link_to 'Logout', destroy_user_session_path, method: :delete, id: 'logout'
+    .channel_name
+      span.channel_title
+        | # general
+      a.channel_setting href="#"
+        span.glyphicon.glyphicon-cog[aria-hidden="true"]
+  .ts-main-content
+    nav.ts-sidebar
+      ul.ts-sidebar-menu
+        li
+          a href=search_channels_path
+            span.glyphicon.glyphicon-search[aria-hidden="true"]
+            |  Search Channel
+        li
+          a href=new_channel_path
+            span.glyphicon.glyphicon-plus[aria-hidden="true"]
+            |  Add Channel
+        li.ts-label
+          | CHANNELS (411)
+        - @channels.each do |channel|
+          li = link_to '# ' + channel.name, channel
+        li.open
+          a href="#"
+            | # general
+      ul.ts-profile-nav
+        li
+          a[href="#"]
+            | Settings
+        li.ts-account
+          a[href="#"]
+            img.ts-avatar.hidden-side src="/images/default_avatar.png" alt=""
+            |  Account
+            i.fa.fa-angle-down.hidden-side
+          ul
+            li
+              = link_to 'My Account', '#'
+            li
+              = link_to 'Edit Account', '#'
+            li
+              = link_to 'Logout', destroy_user_session_path, method: :delete, id: 'logout'
+    .content-wrapper
+      .container-fluid
+        .row
+          .col-md-12
+            .ts-message
+              .message_gutter
+                .message_icon
+                  a.member_preview_link.member_image.thumb_36 href="#" target="#" data-member-id="U0ELMFUJG" data-thumb-size="36" style="background-image: url('/images/default_avatar.png')" aria-hidden="true"
+              .message_content
+                a.nickname[href="#" target="#" data-member-id="U0ELMFUJG"]
+                  | nick.name
+                span.transmission_time
+                  | 3:40 PM
+                span.message_body
+                  | こんにちは!!!
+    footer[style="bottom: 0px;"]
+      #footer_overlay.onboarding_overlay.hidden
+      #footer_msgs
+        #msg_preview.hidden.lato_regular
+          #msg_preview_msg.message
+        #messages-input-container[style="height: 42px;"]
+          form#message-form[onsubmit=""]
+            textarea#message-input.with-emoji-menu maxlength="" aria-label="Message input for Private Channel spelack" autocorrect="off" autocomplete="off" spellcheck="true" onkeyup='this.rows = (this.value.split("\n").length||1);'
+            button#primary_send_button[type="submit"]
+              span.glyphicon.glyphicon-send[aria-hidden="true"]

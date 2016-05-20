@@ -174,7 +174,7 @@ body.clannel_boby {
 
 footer {
   position: fixed;
-  background: #fff;
+  background: #f9f9f9;
   bottom: 0;
   left: 250px;
   right: 1rem;
@@ -277,6 +277,10 @@ textarea {
     vertical-align: top;
 }
 
+hr {
+  border-top: 1px solid rgb(153, 153, 153);
+}
+
 hr.or {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -290,7 +294,8 @@ hr.or:after {
   position: relative;
   top: -12px;
   padding: 0 10px;
-  background: #fff;
+  /*background: #fff;*/
+  background-color: rgba( 255, 255, 255, 0);
   color: #000;
   font-size: 15px;
 }
