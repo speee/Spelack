@@ -6,9 +6,8 @@ Rails.application.configure do
   config.action_controller.perform_caching = true
 
   config.serve_static_files = ENV['RAILS_SERVE_STATIC_FILES'].present?
-  ActionCable.server.config.disable_request_forgery_protection = true
   config.assets.js_compressor = :uglifier
-
+  Rails.application.config.action_cable.allowed_request_origins = ['http://52.196.203.230:28080']
   config.assets.compile = false
 
   config.assets.digest = true
