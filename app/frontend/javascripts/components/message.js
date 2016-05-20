@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import '../../stylesheets/message.css';
 import request from 'superagent';
 
-var root = 'http://localhost:3000';
 export default class Message extends Component {
   static propTypes = {
     id: PropTypes.number.isRequired,

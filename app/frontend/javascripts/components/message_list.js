@@ -7,7 +7,7 @@ import shallowCompare from 'react-addons-shallow-compare'
 import { callApi } from '../utils'
 import Message from './message'
 import MessageForm from './message_form'
-var root = 'http://localhost:3000';
+var root = window.location.origin;
 
 export default class MessageList extends Component {
     static propTypes = {

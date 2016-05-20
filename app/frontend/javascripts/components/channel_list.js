@@ -7,7 +7,7 @@ import shallowCompare from 'react-addons-shallow-compare'
 import { callApi } from '../utils'
 import Channel from './channel'
 
-var root = 'http://localhost:3000';
+var root = window.location.origin;
 
 export default class ChannelList extends Component {
   static propTypes = {
