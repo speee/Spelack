@@ -1,3 +1,5 @@
+javascript:
+  window.nickname = '#{@nickname}';
 .no_attachment_max_width.light_theme
   header.brand.clearfix
     span.menu-btn
@@ -33,11 +35,7 @@
             |  Add Channel
         li.ts-label
           | CHANNELS (411)
-        - @channels.each do |channel|
-          li = link_to '# ' + channel.name, channel
-        li.open
-          a href="#"
-            | # general
+        li#channels
       ul.ts-profile-nav
         li
           a[href="#"]

@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import '../../stylesheets/message.css';
 import request from 'superagent';
 
-var root = 'http://localhost:3000';
 export default class Message extends Component {
   static propTypes = {
+    id: PropTypes.number.isRequired,
     text: PropTypes.string.isRequired,
     date: PropTypes.any.isRequired,
-    id: PropTypes.any.isRequired,
+    name: PropTypes.string.isRequired,
     onDelete: PropTypes.func.isRequired,
     onEdit: PropTypes.func.isRequired
   }
@@ -23,10 +23,10 @@ export default class Message extends Component {
   render () {
     let message_menu
     let main_content = <span className = 'text'>{this.props.text}</span>
-    if (this.state.hoverd){
+    if (this.state.hovered && window.nickname == this.props.name){
       message_menu = <span>
-            <a href = "#" onClick = {::this._onUpdate}>Edit</a>
-            <a href = "#" onClick = {::this._onDelete}>Delete</a>
+            <button type="button" onClick = {::this._onUpdate}>Edit</button>
+            <button type="button" onClick = {::this._onDelete}>Delete</button>
           </span>
     }
     if (this.state.edit){
@@ -36,8 +36,8 @@ export default class Message extends Component {
       </span>
     }
     return (
-      <div className = 'row'　onMouseEnter={::this.onMouseEnter} onMouseLeave = {::this.onMouseLeave}>
-        <span className = 'name'>{this.props.id}</span>
+      <div className = 'row' onMouseEnter={::this.onMouseEnter} onMouseLeave = {::this.onMouseLeave}>
+        <span className = 'name'>{this.props.name}</span>
         <span className = 'date'>{this.props.date}</span>
         <span>{message_menu}</span>
         <div>

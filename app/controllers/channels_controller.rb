@@ -4,6 +4,7 @@ class ChannelsController < ApplicationController
   before_action :set_channels, only: [:index]
 
   def index
+    @nickname = current_user.nickname
   end
 
   def new

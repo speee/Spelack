@@ -1,9 +1,10 @@
 import request from 'superagent';
-
+var root = window.location.origin;
+console.log(root)
 export function callApi (api) {
   return new Promise(
     (resolve, reject) => {
-      request.get("http://localhost:3000/api/"+ api)
+      request.get(root+'/api/'+ api)
       .end(
         (err, res) => {
           if (err) {

@@ -6,13 +6,17 @@ import request from 'superagent';
 import shallowCompare from 'react-addons-shallow-compare'
 import { callApi } from '../utils'
 import Message from './message'
+import MessageForm from './message_form'
+var root = window.location.origin;
 
-var root = 'http://localhost:3000';
-
-export default class MessagesList extends Component {
+export default class MessageList extends Component {
+    static propTypes = {
+    channel_id: PropTypes.number.isRequired
+  }
 
   constructor (props) {
     super(props)
+
     this.state = {
       overscanRowsCount: 5,
       rowsCount: 0,
@@ -22,10 +26,14 @@ export default class MessagesList extends Component {
       virtualScrollRowHeight: 60,
       list: []
     }
+
+    this.onPost = this.onPost.bind(this)
+    this.setList = this.setList.bind(this)
     this.getIndex = this.getIndex.bind(this)
     this.editMessage = this.editMessage.bind(this)
     this.deleteMessage = this.deleteMessage.bind(this)
     this.componentDidMount = this.componentDidMount.bind(this)
+    this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this)
     this._getRowHeight = this._getRowHeight.bind(this)
     this._noRowsRenderer = this._noRowsRenderer.bind(this)
     this._onRowsCountChange = this._onRowsCountChange.bind(this)
@@ -34,19 +42,15 @@ export default class MessagesList extends Component {
     this._updateUseDynamicRowHeight = this._updateUseDynamicRowHeight.bind(this)
   }
   componentDidMount () {
-    callApi('messages/index')
-    .then(
-      (obj) => {
-        this.setState({
-          list:obj,
-          rowsCount:obj.length
-        })
-      }
-    ).catch(
-      (err) => { console.error(err); }
-    );
+    this.setList(this.props.channel_id)
     this.setupSubscription()
+    ReactDOM.render(
+          <MessageForm
+        onPost = {this.onPost}
+      />,document.getElementById('messageform')
+      );
   }
+
   setupSubscription() {
     App.cable.subscriptions.create('MessagesChannel', {
       received(message) {
@@ -56,13 +60,29 @@ export default class MessagesList extends Component {
     })
   }
 
+  setList (channel_id) {
+    request
+    .get(root + '/api/messages/show')
+    .query({channel_id: channel_id})
+    .end(
+      (err, res) => {
+        this.setState({
+          list:JSON.parse(res.text),
+          rowsCount:JSON.parse(res.text).length,
+          scrollToIndex:JSON.parse(res.text).length-1
+        })
+      }
+    );
+  }
+
   updateMessage(message) {
-    console.log(message)
-    this.setState({
-      list: this.state.list.concat(JSON.parse(message)),
-      rowsCount: this.state.rowsCount + 1,
-      scrollToIndex: this.state.rowsCount
-    })
+    if(JSON.parse(message).channel_id == this.props.channel_id){
+      this.setState({
+        list: this.state.list.concat(JSON.parse(message)),
+        rowsCount: this.state.rowsCount + 1,
+        scrollToIndex: this.state.rowsCount
+      })
+    }
   }
 
   render () {
@@ -76,7 +96,6 @@ export default class MessagesList extends Component {
       list
     } = this.state
     return (
-      <div>
         <VirtualScroll
           ref='VirtualScroll'
           className='VirtualScroll'
@@ -89,12 +108,15 @@ export default class MessagesList extends Component {
           scrollToIndex={scrollToIndex}
           width={600}
         />
-      </div>
     )
   }
 
   shouldComponentUpdate (nextProps, nextState) {
     return shallowCompare(this, nextProps, nextState)
+  }
+
+  componentWillReceiveProps (nextProps) {
+    this.setList(nextProps.channel_id)
   }
 
   _getDatum (index) {
@@ -137,9 +159,10 @@ export default class MessagesList extends Component {
 
     return (
       <Message
+      id = {datum.id}
       text = {datum.text}
       date = {datum.created_at}
-      id = {datum.id}
+      name = {datum.nickname}
       onDelete = {this.deleteMessage}
       onEdit = {this.editMessage}
       />
@@ -188,6 +211,14 @@ export default class MessagesList extends Component {
   request
     .put(root + '/messages/' + id)
     .send({text: text})
+    .end(function(err, res){
+    });
+  }
+
+  onPost (text) {
+    request
+    .post(root + '/messages/')
+    .send({text: text,channel_id: this.props.channel_id})
     .end(function(err, res){
     });
   }
