@@ -4,7 +4,6 @@ import request from 'superagent';
 import MessageList from './components/message_list'
 import ChannelList from './components/channel_list'
 
-var root = 'http://localhost:3000';
 export default class Application extends Component {
   constructor (props) {
     super(props)
