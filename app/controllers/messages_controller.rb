@@ -1,11 +1,10 @@
 class MessagesController < ApplicationController
   protect_from_forgery secret: [:destroy, :create]
   skip_before_filter :verify_authenticity_token, only: [:create]
-  before_action :set_user
 
   def index
     @messages = Message.all
-    set_user
+    @nickname = current_user.nickname
   end
 
   def create
@@ -40,9 +39,5 @@ class MessagesController < ApplicationController
 
   def find_by_id
     @message = Message.find(params[:id])
-  end
-
-  def set_user
-    cookies[:nickname] = current_user.nickname
   end
 end
