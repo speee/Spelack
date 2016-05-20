@@ -18,4 +18,8 @@ class User < ActiveRecord::Base
 
   has_attached_file :avatar, styles: { medium: '300x300>', thumb: '100x100>' }, default_url: '/images/default_avatar.png'
   validates_attachment :avatar, content_type: { content_type: ['image/jpg', 'image/jpeg', 'image/png', 'image/gif'] }
+
+  after_create do
+    self.channels << Channel.find(1)
+  end
 end
