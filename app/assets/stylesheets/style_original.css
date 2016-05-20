@@ -1,3 +1,48 @@
+.videl_body {
+  background-color: rgba(0,0,0,0.5);
+  /*position: fixed;*/
+  /*position: relative;*/
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  /*z-index: 3;*/
+  background-size: cover;
+  text-align: center;
+}
+
+video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  background-size: cover;
+}
+.top_title {
+  font-family: 'Damion-Regular';
+  font-style: oblique;
+  color: #fff;
+  font-size: 400%;
+  margin-top: 150px;
+  position: relative;
+  z-index: 2;
+}
+.top_p {
+  font-family: 'Damion-Regular';
+  font-style: oblique;
+  color: #fff;
+  font-size: 240%;
+  margin-top: 10px;
+  position: relative;
+  z-index: 2;
+}
+
 #client_header {
   background: 0 0;
   height: 53px;

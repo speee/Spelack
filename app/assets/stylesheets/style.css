@@ -113,6 +113,13 @@ a:hover {
 .bk-light {
   /*background: #fff;*/
   background-color: rgba( 255, 255, 255, 0.85);
+  border: none;
+}
+.bk-light_opt {
+  /*background: #fff;*/
+  background-color: rgba( 255, 255, 255, 0.5);
+  border: none;
+  border-radius: 20px;
 }
 .bk-brand {
   background: #37a6c4;
@@ -227,6 +234,9 @@ a:hover {
 /****************************
 *       Margins         *
 ****************************/
+.mall_1x {
+  margin: 18px;
+}
 .mt {
   margin-top: 18px;
 }
