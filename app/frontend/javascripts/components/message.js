@@ -19,11 +19,12 @@ export default class Message extends Component {
       hovered: false,
       edit: false
     }
+    this.getCookie = this.getCookie.bind(this)
   }
   render () {
     let message_menu
     let main_content = <span className = 'text'>{this.props.text}</span>
-    if (this.state.hovered){
+    if (this.state.hovered && this.getCookie('nickname') == this.props.name){
       message_menu = <span>
             <button type="button" onClick = {::this._onUpdate}>Edit</button>
             <button type="button" onClick = {::this._onDelete}>Delete</button>
@@ -65,5 +66,24 @@ export default class Message extends Component {
   _onEdit (e) {
   this.props.onEdit(this.props.id,this.refs.textArea.value)
     this.setState({edit: false})
+  }
+  getCookie (name) {
+    var result = null;
+    var cookieName = name + '=';
+    var allcookies = document.cookie;
+
+    var position = allcookies.indexOf( cookieName );
+    if( position != -1 ){
+        var startIndex = position + cookieName.length;
+
+        var endIndex = allcookies.indexOf( ';', startIndex );
+        if( endIndex == -1 ){
+            endIndex = allcookies.length;
+        }
+        result = decodeURIComponent(
+            allcookies.substring( startIndex, endIndex ) );
+    }
+
+    return result;
   }
 }
