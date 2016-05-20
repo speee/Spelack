@@ -26,7 +26,7 @@ export default class Message extends Component {
     if (this.state.hovered){
       message_menu = <span>
             <button type="button" onClick = {::this._onUpdate}>Edit</button>
-            <button type="button" href = "#" onClick = {::this._onDelete}>Delete</button>
+            <button type="button" onClick = {::this._onDelete}>Delete</button>
           </span>
     }
     if (this.state.edit){
