@@ -7,7 +7,6 @@
 </head>
 <body>
   <header>
-    <div>
       <h1><a href="/">Spelack</a></h1>
       <% if user_signed_in? %>
         <div>
@@ -29,7 +28,6 @@
       Copyright Spelack 2016.
     </p>
   </footer>
-<%= yield %>
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </body>
 </html>
