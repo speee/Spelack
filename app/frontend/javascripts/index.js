@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import MessagesList from './components/messages_list'
+import Application from './application'
+
 
 ReactDOM.render(
-  <MessagesList />,
-  document.getElementById('messages')
+  <Application />,
+  document.getElementById('channels')
 );

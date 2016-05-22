@@ -23,8 +23,7 @@ RSpec.describe ChannelsController do
   describe 'GET #index' do
     let(:channels) { create_list(:channel, 25) }
     before do
-      get :index
-      assigns(:current_user).channels << channels
+      subject.current_user.channels << channels
       get :index
     end
     specify { expect(assigns(:channels)).to eq channels }
