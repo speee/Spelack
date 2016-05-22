@@ -42,15 +42,24 @@ namespace :gulp do
   end
 end
 namespace :puma do
-  task :cable do
+  task :cable_start do
     on roles(:web) do
       within current_path do
-        execute :bundle, :exec, :puma, '-d -p 28080 cable/config.ru'
+        execute :bundle, :exec, :puma, '-d -e production -p 28080 cable/config.ru'
+      end
+    end
+  end
+end
+namespace :puma do
+  task :cable_restart do
+    on roles(:web) do
+      within current_path do
+        execute :bundle, :exec, :pumactl, "-e production --config cable/config.ru"
       end
     end
   end
 end
 
 after 'puma:restart', 'gulp:deploy'
-after 'gulp:deploy', 'puma:cable'
+after 'gulp:deploy', 'puma:cable_start'
 after 'deploy:publishing', 'deploy:restart'

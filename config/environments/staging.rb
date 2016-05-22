@@ -8,6 +8,18 @@ Rails.application.configure do
   config.serve_static_files = ENV['RAILS_SERVE_STATIC_FILES'].present?
   config.assets.js_compressor = :uglifier
   Rails.application.config.action_cable.allowed_request_origins = ['http://52.196.203.230:28080']
+  config.action_mailer.default_url_options = { host: '52.196.203.230', port: 25 }
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :enable_starttls_auto => true,
+    :address => "smtp.gmail.com",
+    :port => 587,
+    :domain => 'smtp.gmail.com',
+    :user_name => ENV['EMAIL_USER'],
+    :password => ENV['EMAIL_PASSWORD'],
+    :authentication => 'login',
+  }
   config.assets.compile = false
 
   config.assets.digest = true
