@@ -19,6 +19,7 @@ Rails.application.configure do
     :user_name => ENV['EMAIL_USER'],
     :password => ENV['EMAIL_PASSWORD'],
     :authentication => 'login',
+    :openssl_verify_mode  => 'none'
   }
   config.assets.compile = false
 
