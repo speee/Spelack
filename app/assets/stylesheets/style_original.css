@@ -354,18 +354,13 @@ hr.or:after {
   font-size: 15px;
 }
 
-/*.ts-sidebar-menu .channel_button {
-  display: block!important;
-  text-decoration: none!important;
-  padding: 2px 15px!important;
-  color: #fff!important;
-  background-color: #2C3136!important;
-  border: none!important;
-  width: 250px;
-  text-align: left;
+.fb:before
+{
+  font-family: 'FontAwesome' ;
+  padding-right: 5px ;
 }
 
-.ts-sidebar-menu .channel_button:hover {
-  background-color: #000!important;
-}*/
-
+.btn.focus, .btn:focus, .btn:hover {
+    color: #fff;
+    text-decoration: none;
+}
