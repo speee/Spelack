@@ -19,6 +19,6 @@ body.clannel_boby
         .well.row.pt-2x.pb-3x.bk-light
           - @channels.each do |channel|
             .panel.panel-default
-              = link_to channel.name, channel, class:"panel-heading clannel_box"
+              = link_to "#{'# ' + channel.name}", channel, class:"panel-heading clannel_box"
               .panel-body
                = channel.description
