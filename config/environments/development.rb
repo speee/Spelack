@@ -12,7 +12,7 @@ Rails.application.configure do
     :domain => 'smtp.gmail.com',
     :user_name => 'wataru.yamaura@speee.jp',
     :password => 'Ka5notre321',
-    :authentication => 'plain',
+    :authentication => 'login',
     :openssl_verify_mode  => 'none'
   }
   config.action_mailer.raise_delivery_errors = false
