@@ -24,6 +24,8 @@ RSpec.describe ChannelsController do
     let(:channels) { create_list(:channel, 25) }
     before do
       subject.current_user.channels << channels
+      general = Channel.find(1)
+      channels.unshift(general)
       get :index
     end
     specify { expect(assigns(:channels)).to eq channels }
