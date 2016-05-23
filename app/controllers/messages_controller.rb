@@ -3,7 +3,6 @@ class MessagesController < ApplicationController
   skip_before_filter :verify_authenticity_token, only: [:create]
 
   def index
-    @messages = Message.all
     @nickname = current_user.nickname
   end
 
