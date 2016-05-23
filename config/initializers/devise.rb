@@ -1,5 +1,5 @@
 Devise.setup do |config|
-  config.mailer = "ApplicationMailer"
+  #config.mailer = "ApplicationMailer"
   config.mailer_sender = ENV['EMAIL_USER']
   require 'devise/orm/active_record'
   config.case_insensitive_keys = [:email]
