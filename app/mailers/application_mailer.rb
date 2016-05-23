@@ -1,4 +1,4 @@
-class ApplicationMailer < ActionMailer::Base
+class ApplicationMailer < Devise::Mailer
   before_action :default_opts
 
   private
