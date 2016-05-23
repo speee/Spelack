@@ -1,4 +1,17 @@
-= form_tag search_channels_path, method: 'get'
-  .field
-    = text_field_tag :query, params[:query]
-    = submit_tag "Search", :query => nil
+body.clannel_boby
+  header.clannel_header
+    a href=channels_path
+      span.glyphicon.glyphicon-home.home_icon[aria-hidden="true"]
+  .form-content
+    .container
+      .row
+        .col-md-6.col-md-offset-3
+          .well.row.pt-2x.pb-3x.bk-light
+            h1.text-bold.mt-4x.text-center
+              | Browse all 418 channels
+            = form_tag search_channels_path, method: 'get', class:"mt"
+              .input-group
+                = text_field_tag :query, params[:query], class:"form-control"
+                span.input-group-btn
+                  button.btn.btn-primary[type="submit"]
+                    i.fa.fa-search
