@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
-import '../../stylesheets/message.css';
+// import '../../stylesheets/message.css';
 import request from 'superagent';
 
 export default class Message extends Component {
@@ -25,14 +25,19 @@ export default class Message extends Component {
     let main_content = <span className = 'text'>{this.props.text}</span>
     if (this.state.hovered && window.nickname == this.props.name){
       message_menu = <span>
-            <button type="button" onClick = {::this._onUpdate}>Edit</button>
-            <button type="button" onClick = {::this._onDelete}>Delete</button>
+            <button className="message_edit_button ml_1x" type="button" onClick = {::this._onUpdate}>
+              <span className="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+            </button>
+            <button className="message_delete_button" type="button" onClick = {::this._onDelete}>
+              <span className="glyphicon glyphicon-trash" aria-hidden="true"></span>
+            </button>
           </span>
     }
     if (this.state.edit){
       main_content = <span>
-          <textarea ref="textArea" defaultValue={this.props.text} ></textarea>
-          <button onClick={::this._onEdit}>change</button>
+          <textarea className = "message_edit_form"  ref="textArea" defaultValue={this.props.text} ></textarea>
+          <button className="message_edit_cancel_button" onClick={::this._onEdit}>Cancel</button>
+          <button className="message_edit_save_changes_button" onClick={::this._onEdit}>Save Changes</button>
       </span>
     }
     return (
@@ -42,13 +47,16 @@ export default class Message extends Component {
             </div>
           </div>
         <div className = 'message_content'>
-          <span className = 'nickname'>{this.props.name}</span>
-          <span className = 'transmission_time'>{this.props.date}</span>
-          <span>{message_menu}</span>
+          <div className="message_header">
+            <span className = 'nickname'>{this.props.name}</span>
+            <span className = 'transmission_time'>{this.props.date}</span>
+          </div>
           <div className = 'message_body'>
             {main_content}
           </div>
+
         </div>
+        <span className = 'message_menu_button'>{message_menu}</span>
       </div>
       )
   }
