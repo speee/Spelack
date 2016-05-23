@@ -4,6 +4,7 @@ Rails.application.configure do
   config.eager_load = true
   config.action_mailer.default_url_options = { host: '52.193.153.0', port: 3000 }
   config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_options = { from: ENV['EMAIL_USER'] }
   config.action_mailer.smtp_settings = {
     :enable_starttls_auto => true,
     :address => "smtp.gmail.com",
