@@ -18,7 +18,7 @@ Rails.application.configure do
     :domain => 'smtp.gmail.com',
     :user_name => ENV['EMAIL_USER'],
     :password => ENV['EMAIL_PASSWORD'],
-    :authentication => 'login',
+    :authentication => 'plain',
     :openssl_verify_mode  => 'none'
   }
   config.assets.compile = false
