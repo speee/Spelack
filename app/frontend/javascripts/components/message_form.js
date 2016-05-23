@@ -12,7 +12,7 @@ export default class MessageForm extends Component {
   render () {
     return (
       <div>
-        <textarea id="message-input" ref="inputText" className="with-emoji-menu" maxlength="" aria-label="Message input for Private Channel spelack"/>
+        <textarea id="message-input" ref="textArea" className="with-emoji-menu" maxlength="" aria-label="Message input for Private Channel spelack"/>
         <button id="primary_send_button" onClick={::this.sendText}>
           <span className="glyphicon glyphicon-send" aria-hidden="true"></span>
         </button>
@@ -21,6 +21,6 @@ export default class MessageForm extends Component {
   }
 
   sendText () {
-    this.props.onPost(this.refs.inputText.value)
+    this.props.onPost(this.refs.textArea.value)
   }
 }
