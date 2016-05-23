@@ -2,7 +2,7 @@ Rails.application.configure do
   config.cache_classes = true
 
   config.eager_load = true
-  config.action_mailer.default_url_options = { host: '52.193.153.0', port: 25 }
+  config.action_mailer.default_url_options = { host: '52.193.153.0', port: 3000 }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :enable_starttls_auto => true,
