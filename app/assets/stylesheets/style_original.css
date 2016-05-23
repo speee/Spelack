@@ -434,17 +434,13 @@ footer {
   transition: background 50ms,color 50ms;
   text-shadow: none;
   border-radius: 6px 0 0 6px ;
-  /*border-left: none;*/
 }
 .message_edit_cancel_button:hover{
-  /*background: rgba(176, 228, 243, 0.72);*/
   color: #2A80B9;
 }
 
 .message_edit_save_changes_button {
   bottom: 0;
-  /*background: #fff;*/
-  /*color: rgba(0,0,0,.35);*/
   background: #2ab27b;
   color: #fff;
   border: 2px solid #E0E0E0;
@@ -462,9 +458,6 @@ footer {
   border-left: none;
 }
 .message_edit_save_changes_button:hover{
-  /*background: rgba(176, 228, 243, 0.72);*/
-  border: 2px solid #2ab27b;
-  border-left: none;
   background: #19865A;
 }
 
