@@ -15,6 +15,10 @@ RSpec.describe SearchChannelsController do
     end
 
     context 'when the search word does not exist' do
+      before do
+        general = Channel.find(1)
+        channels.unshift(general)
+      end
       specify { expect(assigns(:channels)).to eq channels }
       before { get :index }
       it_behaves_like 'http_succses', :index
