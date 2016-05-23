@@ -4,6 +4,6 @@ class ApplicationMailer < Devise::Mailer
   private
 
   def default_opts
-    default from: ENV['EMAIL_USER']
+    opts[:from] = ENV['EMAIL_USER']
   end
 end
