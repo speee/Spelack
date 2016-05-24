@@ -631,12 +631,9 @@ li {
   right: -10px;
   top: 45px;
   position: absolute;
-/*  background-color: #E0E0E0;
-  border: 2px solid #E0E0E0;*/
   background-color: #fff;
   border: 2px solid #E0E0E0;
   border-radius: 6px 6px 6px 6px;
-  /*box-shadow: 10px 10px 10px 10px rgba(0,0,0,0.4);*/
   padding: 5px
 }
 .brand .ts-profile-nav li ul li {
@@ -645,16 +642,12 @@ li {
 }
 .brand .ts-profile-nav li ul li a {
   padding: 1px 2px;
-  /*background: #222;*/
   background-color: #fff;
   border: 2px solid #fff;
   border-radius: 6px 6px 6px 6px;
   color: #000;
 }
 .brand .ts-profile-nav li ul li a:hover {
-  /*background-color: #000;*/
-  /*background: rgba(51, 56, 62, 0.35);*/
-  /*background: #37a6c4;*/
   background: #3aa3e3;
   color: #fff;
 }
