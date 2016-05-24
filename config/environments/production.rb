@@ -2,7 +2,7 @@ Rails.application.configure do
   config.cache_classes = true
 
   config.eager_load = true
-  config.action_mailer.default_url_options = { host: '52.193.153.0', port: 3000 }
+  config.action_mailer.default_url_options = { host: '52.192.80.168', port: 3000 }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_options = { from: ENV['EMAIL_USER'] }
   config.action_mailer.smtp_settings = {
@@ -17,7 +17,7 @@ Rails.application.configure do
   }
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
-  Rails.application.config.action_cable.allowed_request_origins = ['http://52.193.153.0:28080']
+  Rails.application.config.action_cable.allowed_request_origins = ['http://52.192.80.168:28080']
 
   config.serve_static_files = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
