@@ -20,8 +20,11 @@ class MessagesController < ApplicationController
 
   def update
     find_by_id
-    @message.update_attribute(:text, params[:text])
-    head :ok
+    if @message.update_attributes(message_params)
+      head :ok
+    else
+      head :bad_request
+    end
   end
 
   def destroy
