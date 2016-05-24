@@ -15,4 +15,5 @@
 //= require components
 //= require channels
 //= require bootstrap
+//= require bundle
 //= require_tree .
