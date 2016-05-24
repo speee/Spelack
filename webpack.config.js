@@ -6,15 +6,10 @@ var config = module.exports = {
   context: __dirname,
   entry: glob.sync('./app/frontend/javascripts/**/*.js'),
     plugins: [
- new webpack.DefinePlugin({
-     'process.env.NODE_ENV': JSON.stringify('production')
- }),
- new webpack.optimize.UglifyJsPlugin({
-     compress:{
-       warnings: true
-     }
-   })
-]
+     new webpack.DefinePlugin({
+         'process.env.NODE_ENV': JSON.stringify('production')
+     }),
+    ]
 };
 config.output = {
   path: path.join(__dirname, 'app', 'assets', 'javascripts','bundle'),

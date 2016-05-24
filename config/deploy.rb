@@ -34,7 +34,7 @@ end
 namespace :gulp do
   task :deploy do
     on roles(:web) do
-      within current_path do
+      within release_path do
         execute './node_modules/.bin/gulp', 'deploy'
       end
     end
