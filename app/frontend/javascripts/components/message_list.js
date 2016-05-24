@@ -76,6 +76,7 @@ export default class MessageList extends Component {
   }
 
   updateMessage(message) {
+    console.log('received message.')
     if(JSON.parse(message).channel_id == this.props.channel_id){
       this.setState({
         list: this.state.list.concat(JSON.parse(message)),
