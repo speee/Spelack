@@ -72,6 +72,6 @@ namespace :deploy do
     end
   end
 end
-after 'puma:restart', 'gulp:deploy'
-after 'gulp:deploy', 'puma:cable_start'
+after 'npm:install', 'gulp:deploy'
+after 'deploy:finished', 'puma:cable_start'
 after 'deploy:publishing', 'deploy:restart'
