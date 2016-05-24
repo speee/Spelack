@@ -11,7 +11,7 @@ require 'sprockets/railtie'
 
 Bundler.require(*Rails.groups)
 
-module NewGradRubyChallenge
+module Spelack
   class Application < Rails::Application
     config.generators do |g|
       g.template_engine = :slim
