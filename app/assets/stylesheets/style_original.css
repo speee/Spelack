@@ -532,9 +532,10 @@ label.required:before{
 .channel_browser_row_header {
   width: 100%;
   font-size: 1rem;
-  line-height: 1.2rem;
+  /*line-height: 1.2rem;*/
   margin-bottom: 3px;
   color: #555459;
+  font-size: 16px;
 }
 
 .overflow_ellipsis {
@@ -546,4 +547,5 @@ label.required:before{
 
 .subtle_silver {
     color: #9e9ea6!important;
+    font-size: 14px;
 }
