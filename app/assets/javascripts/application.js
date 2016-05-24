@@ -16,4 +16,5 @@
 //= require components
 //= require channels
 //= require react_ujs
+//= require bootstrap
 //= require_tree .

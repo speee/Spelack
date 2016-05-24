@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
-import '../../stylesheets/message.css';
+import '../../stylesheets/channel.css';
 
 export default class Channel extends Component {
   static propTypes = {
@@ -15,7 +15,7 @@ export default class Channel extends Component {
   render () {
     return (
       <div>
-        <button type="button" href="#" onClick={::this.__setChannel}>{this.props.name}</button>
+        <button className="channel_button" type="button" href="#" onClick={::this.__setChannel}>{"# " + this.props.name}</button>
       </div>
       )
   }
