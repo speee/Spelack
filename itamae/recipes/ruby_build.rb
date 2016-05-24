@@ -1,5 +1,5 @@
 
-RBENV_DIR = '/home/spelack-dev/.rbenv/'.freeze
+RBENV_DIR = '/home/spelack-dev/.rbenv'.freeze
 RBENV_SCRIPT = '/etc/profile.d/rbenv.sh'.freeze
 
 git RBENV_DIR do
