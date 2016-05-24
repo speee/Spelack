@@ -2,7 +2,7 @@ Rails.application.configure do
   config.cache_classes = true
 
   config.eager_load = true
-  config.action_mailer.default_url_options = { host: '52.192.80.168', port: 3000 }
+  config.action_mailer.default_url_options = { host: '52.192.80.168' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_options = { from: ENV['EMAIL_USER'] }
   config.action_mailer.smtp_settings = {
