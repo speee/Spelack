@@ -17,7 +17,7 @@ var config = module.exports = {
 ]
 };
 config.output = {
-  path: path.join(__dirname, 'app', 'assets', 'javascripts', 'bundle'),
+  path: path.join(__dirname, 'app', 'assets', 'javascripts'),
   filename: 'bundle.js',
   publicPath: '/assets',
 };
