@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   validates :last_name, presence: true, length: { maximum: 30 }
 
   has_attached_file :avatar, styles: { medium: '300x300>', thumb: '100x100>' }, default_url: '/images/default_avatar.png'
-  #validates_attachment :avatar, content_type: { content_type: ['image/jpg', 'image/jpeg', 'image/png', 'image/gif'] }
+  # validates_attachment :avatar, content_type: { content_type: ['image/jpg', 'image/jpeg', 'image/png', 'image/gif'] }
 
   after_create do
     self.channels << Channel.find(1)

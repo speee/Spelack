@@ -18,7 +18,6 @@ set :npm_env_variables, {}
 set :linked_dirs, %w(bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/assets)
 set :rbenv_ruby, '2.2.3'
 
-
 namespace :deploy do
   desc 'Create database'
   task :db_create do
@@ -54,7 +53,7 @@ namespace :puma do
   task :cable_restart do
     on roles(:web) do
       within current_path do
-        execute :bundle, :exec, :pumactl, "-e production --config cable/config.ru"
+        execute :bundle, :exec, :pumactl, '-e production --config cable/config.ru'
       end
     end
   end

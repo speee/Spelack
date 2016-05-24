@@ -6,14 +6,14 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_options = { from: ENV['EMAIL_USER'] }
   config.action_mailer.smtp_settings = {
-    :enable_starttls_auto => true,
-    :address => "smtp.gmail.com",
-    :port => 587,
-    :domain => 'smtp.gmail.com',
-    :user_name => ENV['EMAIL_USER'],
-    :password => ENV['EMAIL_PASSWORD'],
-    :authentication => 'login',
-    :openssl_verify_mode  => 'none'
+    enable_starttls_auto: true,
+    address: 'smtp.gmail.com',
+    port: 587,
+    domain: 'smtp.gmail.com',
+    user_name: ENV['EMAIL_USER'],
+    password: ENV['EMAIL_PASSWORD'],
+    authentication: 'login',
+    openssl_verify_mode: 'none',
   }
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
@@ -27,7 +27,7 @@ Rails.application.configure do
   config.assets.digest = true
 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
-  config.assets.precompile +=  %w( *.woff *.woff2 *.eot *.svg *.ttf )
+  config.assets.precompile += %w( *.woff *.woff2 *.eot *.svg *.ttf )
 
   config.i18n.fallbacks = true
 
