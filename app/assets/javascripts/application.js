@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bundle/bundle
 //= require components
 //= require channels
 //= require bootstrap
