@@ -26,7 +26,8 @@ Rails.application.configure do
 
   config.assets.digest = true
 
-  config.log_level = :debug
+  # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
+  config.assets.precompile +=  %w( *.woff *.woff2 *.eot *.svg *.ttf )
 
   config.i18n.fallbacks = true
 

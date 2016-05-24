@@ -5,29 +5,6 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-  <header>
-      <h1><a href="/">Spelack</a></h1>
-      <% if user_signed_in? %>
-        <div>
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, id: 'logout' %>
-        </div>
-      <% else %>
-        <div>
-          <%= link_to "ログイン", new_user_session_path, class: 'post' %>
-          <%= link_to "新規登録", new_user_registration_path, class: 'post' %>
-        </div>
-      <% end %>
-    </div>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-  </header>
-  <%= yield %>
-  <footer>
-    <p>
-      Copyright Spelack 2016.
-    </p>
-  </footer>
+<%= yield %>
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-</body>
 </html>
