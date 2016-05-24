@@ -20,7 +20,7 @@ Rails.application.configure do
   Rails.application.config.action_cable.allowed_request_origins = ['http://52.192.80.168:28080']
 
   config.serve_static_files = ENV['RAILS_SERVE_STATIC_FILES'].present?
-
+  config.session_store :redis_store, servers: 'redis://spelackec-001.apvows.0001.apne1.cache.amazonaws.com:6379/0', expire_in: 1.day
   config.assets.js_compressor = :uglifier
   config.assets.compile = false
 
