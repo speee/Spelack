@@ -502,3 +502,12 @@ hr.or:after {
     color: #fff;
     text-decoration: none;
 }
+
+label.required:before{
+  content: '*';
+  padding-right: 5px;
+  color: red;
+}
+
+
+

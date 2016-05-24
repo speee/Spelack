@@ -18,7 +18,18 @@ body.login-page.bk-img.bk-fixed
               = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
                 = devise_error_messages!
                 .field
-                  = f.label :first_name, class:"text-uppercase text-sm"
+                  = f.label :email, class:"text-uppercase text-sm required"
+                   | Email
+                  br
+                  = f.email_field :email, class:"form-control mb", placeholder: "Email"
+                .field
+                  = f.label :nickname, class:"text-uppercase text-sm required"
+                  em
+                    | (20 characters maximum)
+                  br
+                  = f.text_field :nickname, autofocus: true, maxlength: "20", class:"form-control mb", placeholder: "Nickname"
+                .field
+                  = f.label :first_name, class:"text-uppercase text-sm required"
                   em
                     | (30 characters maximum)
                   br
@@ -30,24 +41,13 @@ body.login-page.bk-img.bk-fixed
                   br
                   = f.text_field :middle_name, autofocus: true, maxlength: "30", class:"form-control mb", placeholder: "Middle name"
                 .field
-                  = f.label :last_name, class:"text-uppercase text-sm"
+                  = f.label :last_name, class:"text-uppercase text-sm required"
                   em
                     | (30 characters maximum)
                   br
                   = f.text_field :last_name, autofocus: true, maxlength: "30", class:"form-control mb", placeholder: "Last name"
                 .field
-                  = f.label :nickname, class:"text-uppercase text-sm"
-                  em
-                    | (20 characters maximum)
-                  br
-                  = f.text_field :nickname, autofocus: true, maxlength: "20", class:"form-control mb", placeholder: "Nickname"
-                .field
-                  = f.label :email, class:"text-uppercase text-sm"
-                   | Email
-                  br
-                  = f.email_field :email, class:"form-control mb", placeholder: "Email"
-                .field
-                  = f.label :password, class:"text-uppercase text-sm"
+                  = f.label :password, class:"text-uppercase text-sm required"
                     | Password
                   - if @validatable
                     em
@@ -57,14 +57,14 @@ body.login-page.bk-img.bk-fixed
                   br
                   = f.password_field :password, autocomplete: "off", class:"form-control mb", placeholder: "Password"
                 .field
-                  = f.label :password_confirmation, class:"text-uppercase text-sm"
+                  = f.label :password_confirmation, class:"text-uppercase text-sm required"
                   br
                   = f.password_field :password_confirmation, autocomplete: "off", class:"form-control mb", placeholder: "Password Confirmation"
                 .actions
                   = f.submit "Sign up", class:"btn btn-primary btn-block"
                 hr
                 div style="margin-top: 15px; text-align: center;"
-                  = link_to "Existing users, Log In", new_session_path(resource_name)
+                  = link_to "Existing users, Sign In", new_session_path(resource_name)
                 div style="margin-top: 15px; text-align: center;"
                     = link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name)
                 / = render "devise/shared/links"
