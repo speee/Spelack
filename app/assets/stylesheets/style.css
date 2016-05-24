@@ -585,10 +585,8 @@ li {
   display: block;
   width: 200px;
 }
-@media only screen and (min-width: 992px) {
-  .brand .logo {
-    width: 250px;
-  }
+.brand .logo {
+  width: 250px;
 }
 .brand .logo img {
   height: 20px;
@@ -610,10 +608,8 @@ li {
   color: #fff;
   padding: 20px 20px;
 }
-@media only screen and (min-width: 992px) {
-  .brand .menu-btn {
-    display: none;
-  }
+.brand .menu-btn {
+  display: none;
 }
 
 .brand .ts-profile-nav {
@@ -663,10 +659,8 @@ li {
   visibility: visible;
   opacity: 1;
 }
-@media only screen and (min-width: 992px) {
-  .brand .ts-profile-nav {
-    display: block;
-  }
+.brand .ts-profile-nav {
+  display: block;
 }
 .ts-sidebar::-webkit-scrollbar-track {
   background-color: transparent;
@@ -700,16 +694,12 @@ li {
   padding: 10px 15px;
   color: #fff;
 }
-@media only screen and (min-width: 992px) {
-  .ts-sidebar .ts-profile-nav {
-    display: none;
-  }
+.ts-sidebar .ts-profile-nav {
+  display: none;
 }
-@media only screen and (min-width: 992px) {
-  .ts-sidebar {
-    max-height: 100%;
-    bottom: 0;
-  }
+.ts-sidebar {
+  max-height: 100%;
+  bottom: 0;
 }
 .ts-sidebar-menu .ts-label {
   /*color: #585c64;*/
@@ -773,14 +763,12 @@ li {
   padding-top: 15px;
   margin-top: 60px;
 }
-@media only screen and (min-width: 992px) {
-  .ts-main-content .ts-sidebar {
-    width: 250px;
-    float: left;
-  }
-  .ts-main-content .content-wrapper {
-    margin-left: 250px;
-  }
+.ts-main-content .ts-sidebar {
+  width: 250px;
+  float: left;
+}
+.ts-main-content .content-wrapper {
+  margin-left: 250px;
 }
 /* Login page */
 .login-page {

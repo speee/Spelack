@@ -201,23 +201,23 @@ body.clannel_boby {
 }
 
 .light_theme .ts-message.first .message_content .bot_label, .light_theme .ts-message.first .message_content .message_sender, .light_theme .ts-message.selected .message_content .bot_label, .light_theme .ts-message.selected .message_content .message_sender {
-    display: inline;
+  display: inline;
 }
 
 .light_theme .ts-message.first .message_content, .light_theme .ts-message.selected .message_content {
-    margin-top: .0625rem;
+  margin-top: .0625rem;
 }
 
 .light_theme .ts-message .message_content {
-    margin-left: 4.5rem;
+  margin-left: 4.5rem;
 }
 
 .member_image {
-    border-radius: .2rem;
-    background-size: 100%;
-    background-repeat: no-repeat;
-    display: inline-block;
-    position: relative;
+  border-radius: .2rem;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  display: inline-block;
+  position: relative;
 }
 
 .member_image_demo {
@@ -509,5 +509,27 @@ label.required:before{
   color: red;
 }
 
+/*
+.container {
+  width: 970px;
+  max-width: none !important;
+}
 
+.navbar-collapse {
+  display: block !important;
+  height: auto !important;
+  padding-bottom: 0;
+  overflow: visible !important;
+}
 
+.navbar-toggle {
+  display: none;
+}
+.navbar-collapse {
+  border-top: 0;
+}
+
+.navbar-brand {
+  smargin-left: -15px;
+}
+*/
