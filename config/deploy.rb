@@ -9,7 +9,7 @@ set :log_level, :debug
 set :rbenv_type, :user
 set :rbenv_ruby, '2.2.3'
 set :npm_target_path, -> { release_path }
-set :npm_flags, ''
+set :npm_flags, '--silent --no-progress'
 set :nvm_type, :user
 set :nvm_node, 'v5.10.1'
 set :nvm_custom_path, '/usr/local/nvm'
