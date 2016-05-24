@@ -2,10 +2,6 @@ class MessagesController < ApplicationController
   protect_from_forgery secret: [:destroy, :create]
   skip_before_filter :verify_authenticity_token, only: [:create]
 
-  def index
-    @nickname = current_user.nickname
-  end
-
   def create
     @message = Message.new(message_params)
     @message.user_id = current_user.id
