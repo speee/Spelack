@@ -17,7 +17,16 @@ body.clannel_boby
                   i.fa.fa-search
 
         .well.row.pt-2x.pb-3x.bk-light
-          - @channels.each do |channel|
+          .channel_browser_divider Channels you can join (#{@not_joined_channels.length} channels)
+          - @not_joined_channels.each do |channel|
+            = link_to channel, class: 'channel_browser_row' do
+              .channel_browser_row_header.overflow_ellipsis
+                | #{'# ' + channel.name}
+              .subtle_silver
+                = channel.description
+
+          .channel_browser_divider Channels you belong to (#{@joined_channels.length} channels)
+          - @joined_channels.each do |channel|
             = link_to channel, class: 'channel_browser_row' do
               .channel_browser_row_header.overflow_ellipsis
                 | #{'# ' + channel.name}
