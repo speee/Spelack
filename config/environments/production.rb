@@ -15,7 +15,7 @@ Rails.application.configure do
     password: ENV['EMAIL_PASSWORD'],
     from: ENV['EMAIL_USER'],
     authentication: 'login',
-    openssl_verify_mode: 'none'
+    openssl_verify_mode: 'none',
   }
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
