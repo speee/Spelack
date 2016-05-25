@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
-import { VirtualScroll } from 'react-virtualized';
+import { AutoSizer, VirtualScroll } from 'react-virtualized';
 import 'react-virtualized/styles.css'; // only needs to be imported once
 import request from 'superagent';
 import shallowCompare from 'react-addons-shallow-compare'
@@ -22,8 +22,9 @@ export default class MessageList extends Component {
       rowsCount: 0,
       scrollToIndex: undefined,
       useDynamicRowHeight: false,
-      virtualScrollHeight: 300,
-      virtualScrollRowHeight: 60,
+      virtualScrollRowHeight: 90,
+      virtualScrollHeight: window.innerHeight - 150,
+      virtualScrollWidth: window.innerWidth - 270,
       list: []
     }
 
@@ -33,6 +34,7 @@ export default class MessageList extends Component {
     this.editMessage = this.editMessage.bind(this)
     this.deleteMessage = this.deleteMessage.bind(this)
     this.componentDidMount = this.componentDidMount.bind(this)
+    this.componentWillUnmount = this.componentWillUnmount.bind(this)
     this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this)
     this._getRowHeight = this._getRowHeight.bind(this)
     this._noRowsRenderer = this._noRowsRenderer.bind(this)
@@ -40,8 +42,10 @@ export default class MessageList extends Component {
     this._onScrollToRowChange = this._onScrollToRowChange.bind(this)
     this._rowRenderer = this._rowRenderer.bind(this)
     this._updateUseDynamicRowHeight = this._updateUseDynamicRowHeight.bind(this)
+    this.handleResize = this.handleResize.bind(this)
   }
   componentDidMount () {
+    window.addEventListener('resize', this.handleResize);
     this.setList(this.props.channel_id)
     this.setupSubscription()
     ReactDOM.render(
@@ -49,6 +53,9 @@ export default class MessageList extends Component {
         onPost = {this.onPost}
       />,document.getElementById('messageform')
       );
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleResize);
   }
 
   setupSubscription() {
@@ -91,14 +98,16 @@ export default class MessageList extends Component {
       rowsCount,
       scrollToIndex,
       useDynamicRowHeight,
-      virtualScrollHeight,
       virtualScrollRowHeight,
+      virtualScrollHeight,
+      virtualScrollWidth,
       list
     } = this.state
     return (
         <VirtualScroll
           ref='VirtualScroll'
-          className='VirtualScroll'
+          className={style.VirtualScroll}
+          width={virtualScrollWidth}
           height={virtualScrollHeight}
           overscanRowsCount={overscanRowsCount}
           noRowsRenderer={this._noRowsRenderer}
@@ -106,7 +115,6 @@ export default class MessageList extends Component {
           rowHeight={useDynamicRowHeight ? this._getRowHeight : virtualScrollRowHeight}
           rowRenderer={this._rowRenderer}
           scrollToIndex={scrollToIndex}
-          width={600}
         />
     )
   }
@@ -205,7 +213,8 @@ export default class MessageList extends Component {
   listed[index].text = text
   this.setState({
     list: listed,
-    scrollToIndex: Number(index)
+    scrollToIndex: Number(index),
+//    useDynamicRowHeight: 120
   });
 
   request
@@ -221,5 +230,12 @@ export default class MessageList extends Component {
     .send({text: text,channel_id: this.props.channel_id})
     .end(function(err, res){
     });
+  }
+  handleResize () {
+   this.setState({
+    virtualScrollHeight: window.innerHeight - 150,
+    virtualScrollWidth: window.innerWidth - 270
+   });
+   console.log(window.innerHeight)
   }
 }
