@@ -52,12 +52,12 @@ export default class MessageList extends Component {
   }
 
   setupSubscription() {
-    console.log(App.cable.subscriptions.create('MessagesChannel', {
+    App.cable.subscriptions.create('MessagesChannel', {
       received(message) {
         return this.updateMessage(message)
       },
       updateMessage: this.updateMessage.bind(this)
-    }))
+    })
   }
 
   setList (channel_id) {
@@ -76,7 +76,6 @@ export default class MessageList extends Component {
   }
 
   updateMessage(message) {
-    console.log('received message.')
     if(JSON.parse(message).channel_id == this.props.channel_id){
       this.setState({
         list: this.state.list.concat(JSON.parse(message)),
