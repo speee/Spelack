@@ -9,10 +9,23 @@ export default class Application extends Component {
     super(props)
 
     this.state = {
-      selected: undefined,
-      name: undefined
+      selected: 1,
+      name: 'general'
     }
   }
+
+  componentDidMount () {
+    ReactDOM.render(
+      <MessageList
+        channel_id = {this.state.selected}
+      />,document.getElementById('messages')
+    );
+    ReactDOM.render(
+      <span>#{this.state.name}</span>
+      ,document.getElementById('channel_title')
+    );
+  }
+
   render () {
     return (
       <div>
