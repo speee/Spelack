@@ -10,8 +10,9 @@ Rails.application.configure do
     address: 'smtp.gmail.com',
     port: 587,
     domain: 'smtp.gmail.com',
-    user_name: 'wataru.yamaura@speee.jp',
-    password: 'Ka5notre321',
+    user_name: ENV['EMAIL_USER'],
+    password: ENV['EMAIL_PASSWORD'],
+    from: ENV['EMAIL_USER'],
     authentication: 'login',
     openssl_verify_mode: 'none',
   }
