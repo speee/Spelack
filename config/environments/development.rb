@@ -19,5 +19,5 @@ Rails.application.configure do
   end
   config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.delivery_method = :letter_opener_web
-  config.assets.precompile +=  %w( *.woff *.woff2 *.eot *.svg *.ttf )
+  config.assets.precompile += %w( *.woff *.woff2 *.eot *.svg *.ttf )
 end
