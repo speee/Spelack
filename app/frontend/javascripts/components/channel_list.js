@@ -22,7 +22,7 @@ export default class ChannelList extends Component {
       scrollToIndex: undefined,
       useDynamicRowHeight: false,
       virtualScrollHeight: 300,
-      virtualScrollRowHeight: 60,
+      virtualScrollRowHeight: 24,
       list: [],
       selected: undefined
     }
@@ -71,7 +71,7 @@ export default class ChannelList extends Component {
           rowHeight={useDynamicRowHeight ? this._getRowHeight : virtualScrollRowHeight}
           rowRenderer={this._rowRenderer}
           scrollToIndex={scrollToIndex}
-          width={200}
+          width={250}
         />
     )
   }
