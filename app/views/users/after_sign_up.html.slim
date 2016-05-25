@@ -3,17 +3,14 @@ body.login-page.bk-img.bk-fixed
     .container
       .row
         .col-md-6.col-md-offset-3
-          h1.text-center.text-bold.text-light.mt-4x
-            | After Sign Up
-          .well.row.pt-2x.pb-3x.bk-light.bk-opacity
+          .well.row.pt-2x.pb-3x.bk-light.bk-opacity.mt-4x
             .col-md-8.col-md-offset-2
-              / #{messages}
+              - if notice
+                h4 = notice
+              - if alert
+                h4 = alert
+              / a.btn.btn-info.mall_1x.text-lg href="/users/sign_in"
+              /   | Sign In
+              .text-center
+                = link_to "Top", root_path, class: "btn btn-info mall_1x text-lg"
 
-          / if notice do
-          /   p.alert.alert-notice
-          /     = notice
-          / end
-          / if alert do
-          /   p.alert.alert-notice
-          /   = alert
-          / end
