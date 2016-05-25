@@ -214,7 +214,6 @@ export default class MessageList extends Component {
   this.setState({
     list: listed,
     scrollToIndex: Number(index),
-//    useDynamicRowHeight: 120
   });
 
   request
@@ -236,6 +235,5 @@ export default class MessageList extends Component {
     virtualScrollHeight: window.innerHeight - 150,
     virtualScrollWidth: window.innerWidth - 270
    });
-   console.log(window.innerHeight)
   }
 }
