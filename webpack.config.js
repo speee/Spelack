@@ -5,7 +5,7 @@ var glob = require('glob')
 var config = module.exports = {
   context: __dirname,
   entry: glob.sync('./app/frontend/javascripts/**/*.js'),
-    plugins: [
+  plugins: [
      new webpack.DefinePlugin({
          'process.env.NODE_ENV': JSON.stringify('production')
      }),
