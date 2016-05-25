@@ -51,12 +51,14 @@ export default class MessageList extends Component {
       );
   }
 
-  console.log(App.cable.subscriptions.create('MessagesChannel', {
+  setupSubscription() {
+    console.log(App.cable.subscriptions.create('MessagesChannel', {
       received(message) {
         return this.updateMessage(message)
       },
       updateMessage: this.updateMessage.bind(this)
     }))
+  }
 
   setList (channel_id) {
     request
