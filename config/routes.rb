@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'search_users/index'
+
   root 'users#index'
   namespace 'api' do
     get 'messages/index'
