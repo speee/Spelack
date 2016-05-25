@@ -7,9 +7,9 @@ body.clannel_boby
     .row
       .col-md-6.col-md-offset-3
         .text-center.well.row.pt-2x.pb-3x.bk-light
-          - if @my_path == '/channels/new'
+          - if @referer_path == '/channels/new'
             h1.text-bold.mt-4x = '# ' +  @channel.name + ' を作成しました'
-          - elsif @my_path == '/search_channels'
+          - elsif @referer_path == '/search_channels'
             h1.text-bold.mt-4x = '# ' +  @channel.name
           h4.mt-1x =  @channel.description
           .mt-2x
@@ -17,8 +17,8 @@ body.clannel_boby
               = link_to 'join', join_channels_path(id: @channel.id), class:"btn btn-warning mr_1x text-lg"
             = link_to 'edit', edit_channel_path(@channel), class:"btn btn-success text-lg"
             br
-          - if @my_path == '/channels/new'
+          - if @referer_path == '/channels/new'
             .mt-1x = link_to 'homeへ戻る', channels_path
-          - elsif @my_path == '/search_channels'
+          - elsif @referer_path == '/search_channels'
             .mt-1x = link_to 'Channel検索へ戻る', search_channels_path
 

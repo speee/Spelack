@@ -22,7 +22,7 @@ class ChannelsController < ApplicationController
   end
 
   def show
-    @my_path = URI(request.referer).path
+    @referer_path = URI(request.referer).path
     # => /books
 
     # Rails.application.routes.recognize_path(my_path)
