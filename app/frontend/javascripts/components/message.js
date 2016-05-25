@@ -21,6 +21,8 @@ export default class Message extends Component {
     }
   }
   render () {
+    let date = new Date(this.props.date)
+    let date_text = date.getFullYear() + '年' + (date.getMonth()+1) + '月' + date.getDate() + '日' + date.getHours() + ':' +   date.getMinutes()
     let message_menu
     let main_content = <span className = 'text'>{this.props.text}</span>
     if (this.state.hovered && (window.nickname == this.props.name)){
@@ -49,7 +51,7 @@ export default class Message extends Component {
         <div className = 'message_content'>
           <div className="message_header">
             <span className = 'nickname'>{this.props.name}</span>
-            <span className = 'transmission_time'>{this.props.date}</span>
+            <span className = 'transmission_time'>{date_text}</span>
           </div>
           <div className = 'message_body'>
             {main_content}
