@@ -23,7 +23,7 @@ export default class Message extends Component {
   render () {
     let message_menu
     let main_content = <span className = 'text'>{this.props.text}</span>
-    if (this.state.hovered && window.nickname == this.props.name){
+    if (this.state.hovered && (window.nickname == this.props.name)){
       message_menu = <span>
             <button className="message_edit_button ml_1x" type="button" onClick = {::this._onUpdate}>
               <span className="glyphicon glyphicon-pencil" aria-hidden="true"></span>
@@ -36,7 +36,7 @@ export default class Message extends Component {
     if (this.state.edit){
       main_content = <span>
           <textarea className = "message_edit_form"  ref="textArea" defaultValue={this.props.text} ></textarea>
-          <button className="message_edit_cancel_button" onClick={::this._onEdit}>Cancel</button>
+          <button className="message_edit_cancel_button" onClick={::this.onCancel}>Cancel</button>
           <button className="message_edit_save_changes_button" onClick={::this._onEdit}>Save Changes</button>
       </span>
     }
@@ -79,5 +79,10 @@ export default class Message extends Component {
   _onEdit (e) {
   this.props.onEdit(this.props.id,this.refs.textArea.value)
     this.setState({edit: false})
+  }
+  onCancel () {
+    this.setState({
+      edit:false
+    })
   }
 }
