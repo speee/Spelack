@@ -106,7 +106,7 @@ export default class MessageList extends Component {
     return (
         <VirtualScroll
           ref='VirtualScroll'
-          className={style.VirtualScroll}
+          className='VirtualScroll'
           width={virtualScrollWidth}
           height={virtualScrollHeight}
           overscanRowsCount={overscanRowsCount}
