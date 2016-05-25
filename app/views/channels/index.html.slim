@@ -18,8 +18,7 @@ javascript:
           li
             = link_to 'Logout', destroy_user_session_path, method: :delete, id: 'logout'
     .channel_name
-      span.channel_title
-        | # general
+      span#channel_title
       a.channel_setting href="#"
         span.glyphicon.glyphicon-cog.ml_1x[aria-hidden="true"]
   .ts-main-content
