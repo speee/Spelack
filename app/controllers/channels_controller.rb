@@ -23,10 +23,6 @@ class ChannelsController < ApplicationController
 
   def show
     @referer_path = URI(request.referer).path
-    # => /books
-
-    # Rails.application.routes.recognize_path(my_path)
-    # => {:action=>"show", :controller=>"books", :page=>"4"}
   end
 
   def destroy
