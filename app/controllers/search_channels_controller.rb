@@ -11,7 +11,6 @@ class SearchChannelsController < ApplicationController
     @joined_channels = []
     @not_joined_channels = []
     @channels.each do |channel|
-      # binding.pry
       if current_user.channels.exists?(channel.id) then
         @joined_channels << channel
       else
