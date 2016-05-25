@@ -12,9 +12,3 @@
 Lint/UnusedMethodArgument:
   Exclude:
     - 'app/controllers/application_controller.rb'
-
-# Offense count: 2
-# Configuration parameters: AllowHeredoc, AllowURI, URISchemes.
-# URISchemes: http, https
-Metrics/LineLength:
-  Max: 132
