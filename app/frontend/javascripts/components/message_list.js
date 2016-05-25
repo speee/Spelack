@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
-import { AutoSizer, VirtualScroll } from 'react-virtualized';
+import { VirtualScroll } from 'react-virtualized';
 import 'react-virtualized/styles.css'; // only needs to be imported once
 import request from 'superagent';
 import shallowCompare from 'react-addons-shallow-compare'
