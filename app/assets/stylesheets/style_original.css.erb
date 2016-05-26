@@ -201,23 +201,23 @@ body.clannel_boby {
 }
 
 .light_theme .ts-message.first .message_content .bot_label, .light_theme .ts-message.first .message_content .message_sender, .light_theme .ts-message.selected .message_content .bot_label, .light_theme .ts-message.selected .message_content .message_sender {
-    display: inline;
+  display: inline;
 }
 
 .light_theme .ts-message.first .message_content, .light_theme .ts-message.selected .message_content {
-    margin-top: .0625rem;
+  margin-top: .0625rem;
 }
 
 .light_theme .ts-message .message_content {
-    margin-left: 4.5rem;
+  margin-left: 4.5rem;
 }
 
 .member_image {
-    border-radius: .2rem;
-    background-size: 100%;
-    background-repeat: no-repeat;
-    display: inline-block;
-    position: relative;
+  border-radius: .2rem;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  display: inline-block;
+  position: relative;
 }
 
 .member_image_demo {
@@ -226,7 +226,9 @@ body.clannel_boby {
     background-repeat: no-repeat;
     display: inline-block;
     position: relative;
-    background-image: url('/images/default_avatar.png');
+    /*background-image: url('/images/default_avatar.png');*/
+    background-image:url(<%= asset_path 'efault_avatar.png' %>);
+
 }
 
 .member_image.thumb_36 {
@@ -501,4 +503,61 @@ hr.or:after {
 .btn.focus, .btn:focus, .btn:hover {
     color: #fff;
     text-decoration: none;
+}
+
+label.required:before{
+  content: '*';
+  padding-right: 5px;
+  color: red;
+}
+
+.channel_browser_row:hover {
+  background: #edf7fd;
+  border: 1px solid #d3ecfa;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.channel_browser_row {
+  display: block;
+  width: 100%;
+  min-height: 60px;
+  padding: 10px;
+  border: 1px solid transparent;
+  border-top: 1px solid #e8e8e8;
+  cursor: pointer;
+  font-size: .875rem;
+  line-height: 1.4;
+  color: #9e9ea6;
+}
+
+.channel_browser_row_header {
+  width: 100%;
+  font-size: 1rem;
+  margin-bottom: 3px;
+  color: #555459;
+  font-size: 16px;
+}
+
+.channel_browser_divider {
+  color: #67686e;
+  font-size: 15px;
+  height: 35px;
+  line-height: 2.1875rem;
+  width: 100%;
+  padding-left: 1rem;
+  font-weight: 700;
+  background: #fff;
+}
+
+.overflow_ellipsis {
+  display: block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.subtle_silver {
+    color: #9e9ea6!important;
+    font-size: 14px;
 }

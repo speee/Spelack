@@ -9,10 +9,10 @@ body.login-page.bk-img.bk-fixed
             .col-md-8.col-md-offset-2
               = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
                 = devise_error_messages!
-                = f.label :email, class:"text-uppercase text-sm"
+                = f.label :email, class:"text-uppercase text-lg"
                   | Email
                 = f.email_field :email, autofocus: true, class: "form-control mb", placeholder: "Email"
-                = f.label :password, class:"text-uppercase text-sm"
+                = f.label :password, class:"text-uppercase text-lg"
                   | Password
                 = f.password_field :password, autocomplete: "off", class: "form-control mb", placeholder: "Password"
                 - if devise_mapping.rememberable?
@@ -21,13 +21,13 @@ body.login-page.bk-img.bk-fixed
                   = f.label :remember_me, for:"checkbox7"
                     |  Keep me signed in
                 .actions
-                  = f.submit "Log in", class:"btn btn-primary btn-block"
+                  = f.submit "Log in", class:"btn btn-primary btn-block text-lg"
                 hr
-                a.btn.btn-block.btn-social.btn-google[style="line-height: 28px;"]
+                a.btn.btn-block.btn-social.btn-google[style="line-height: 18px;"]
                   span.fa.fa-google
-                  |  Sign in with Google
+                  span.text-lg Sign in with Google
                 hr
-                div[style="margin-top: 15px; text-align: center;"]
+                div[style="margin-top: 15px; text-align: center; font-size: 16px;"]
                   | Don't have an account?
                   a[href="sign_up.html"]
                     | Sing Up
