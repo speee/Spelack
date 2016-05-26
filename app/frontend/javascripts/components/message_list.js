@@ -74,7 +74,7 @@ export default class MessageList extends Component {
         this.setState({
           list:JSON.parse(res.text),
           rowsCount:JSON.parse(res.text).length,
-          scrollToIndex:JSON.parse(res.text).length-1
+          scrollToIndex:JSON.parse(res.text).length - 1
         })
       }
     );
@@ -110,7 +110,7 @@ export default class MessageList extends Component {
           overscanRowsCount={overscanRowsCount}
           noRowsRenderer={this._noRowsRenderer}
           rowsCount={rowsCount}
-          rowHeight={useDynamicRowHeight ? this._getRowHeight : virtualScrollRowHeight}
+          rowHeight={useDynamicRowHeight ? this._getRowHeight : ::this._getRowHeightWithNewLine}
           rowRenderer={this._rowRenderer}
           scrollToIndex={scrollToIndex}
         />
@@ -130,9 +130,21 @@ export default class MessageList extends Component {
     return list[(index % list.length)]
   }
 
+  _getRowHeightWithNewLine (index) {
+    var space = this.state.list[index].text.split('\n').length - 1
+    if(space){
+      return 90 + (space * 17)
+    }
+    return 90
+  }
+
   _getRowHeight (index) {
     if (index == this.state.activeEdit){
       return 170
+    }
+    var space = this.state.list[index].text.split('\n').length - 1
+    if(space){
+      return 90 + (space * 20)
     }
     return 90
   }
@@ -217,6 +229,7 @@ export default class MessageList extends Component {
     });
     this.setState({
       scrollToIndex:undefined,
+      activeEdit: undefined,
       useDynamicRowHeight:false
     })
   }
@@ -246,7 +259,7 @@ export default class MessageList extends Component {
 
   onCancel (){
     this.setState({
-      useDynamicRowHeight:false
+      activeEdit: undefined
     })
   }
 }
