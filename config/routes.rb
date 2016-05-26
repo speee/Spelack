@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   root 'users#index'
-  # devise_for :users, :controllers => { :confirmations => "my/confirmations" }
   namespace 'api' do
     get 'messages/index'
     get 'messages/show'
