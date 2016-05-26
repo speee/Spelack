@@ -27,6 +27,7 @@ class DirectMessagesController < ApplicationController
   def search_users
     @users = User.search(params[:query])
   end
+
   def set_dm_channels
     @dm_channels = current_user.channels.where(status: 3)
   end

@@ -23,11 +23,11 @@ class User < ActiveRecord::Base
     self.channels << Channel.find(1)
   end
 
-  def self.search(query)
+  def self.search(query, current_user)
     if query
-      User.where(['nickname LIKE ? ', "#{query}%"])
+      User.where([current_user.id + ' != id AND nickname LIKE ? ', "#{query}%"])
     else
-      User.all
+      User.where.not(id: current_user.id)
     end
   end
 end
