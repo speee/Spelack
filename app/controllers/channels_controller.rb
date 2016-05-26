@@ -22,7 +22,7 @@ class ChannelsController < ApplicationController
   end
 
   def show
-    @referer_path = URI(request.referer).path
+    @referer_path = request.referer.blank? ? channels_path : URI(request.referer).path
   end
 
   def destroy
