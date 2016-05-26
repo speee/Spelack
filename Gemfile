@@ -14,7 +14,7 @@ source 'https://rubygems.org' do
   gem 'jquery-rails'
   gem 'kakurenbo-puti'
   gem 'link_thumbnailer'
-  gem 'mysql2', '~> 0.3.20'
+  gem 'mysql2', '~> 0.3.21'
   gem 'paperclip'
   gem 'puma'
   gem 'rails', '4.2.4'
@@ -30,6 +30,8 @@ source 'https://rubygems.org' do
   group :development do
     gem 'capistrano'
     gem 'capistrano-bundler'
+    gem 'capistrano-gulp'
+    gem 'capistrano-npm'
     gem 'capistrano-rails'
     gem 'capistrano-rbenv'
     gem 'capistrano3-puma'
@@ -62,7 +64,7 @@ source 'https://rubygems.org' do
     gem 'validation_examples_matcher'
   end
 
-  group :production do
-    gem 'unicorn', '~> 4.9.0'
+  group :staging, :production do
+    gem 'eventmachine', '1.2.0.1'
   end
 end
