@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
   devise_for :users, controllers: { registrations: 'registrations' }
   resources :channels
-  resources :messages, only: %i(index create update destroy)
+  resources :messages, only: %i(create update destroy)
   resources :search_channels, only: :index
   resources :join_channels, only: :index
   get 'users/after_sign_up'
