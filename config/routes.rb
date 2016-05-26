@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :channels, only: :index
     resources :users, only: :index
   end
-  devise_for :users, controllers: { registrations: "registrations" }
+  devise_for :users, controllers: { registrations: 'registrations' }
   resources :channels
   resources :messages, only: %i(index create update destroy)
   resources :search_channels, only: :index
