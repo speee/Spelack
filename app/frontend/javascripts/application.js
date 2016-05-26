@@ -9,9 +9,23 @@ export default class Application extends Component {
     super(props)
 
     this.state = {
-      selected: undefined
+      selected: 1,
+      name: 'general'
     }
   }
+
+  componentDidMount () {
+    ReactDOM.render(
+      <MessageList
+        channel_id = {this.state.selected}
+      />,document.getElementById('messages')
+    );
+    ReactDOM.render(
+      <span>#{this.state.name}</span>
+      ,document.getElementById('channel_title')
+    );
+  }
+
   render () {
     return (
       <div>
@@ -23,9 +37,10 @@ export default class Application extends Component {
       )
   }
 
-  setChannel (channel_id) {
+  setChannel (channel_id,name) {
     this.setState({
-      selected: channel_id
+      selected: channel_id,
+      name: name
     })
   }
   componentDidUpdate(nextProps, nextState) {
@@ -34,6 +49,10 @@ export default class Application extends Component {
         <MessageList
           channel_id = {this.state.selected}
         />,document.getElementById('messages')
+      );
+      ReactDOM.render(
+        <span>#{this.state.name}</span>
+        ,document.getElementById('channel_title')
       );
     }
   }
