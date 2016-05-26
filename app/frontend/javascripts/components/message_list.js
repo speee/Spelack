@@ -18,7 +18,7 @@ export default class MessageList extends Component {
     super(props)
 
     this.state = {
-      overscanRowsCount: 5,
+      overscanRowsCount: 20,
       rowsCount: 0,
       scrollToIndex: undefined,
       useDynamicRowHeight: false,
@@ -131,9 +131,8 @@ export default class MessageList extends Component {
   }
 
   _getRowHeight (index) {
-    console.log(index == this.state.activeEdit)
     if (index == this.state.activeEdit){
-      return 180
+      return 170
     }
     return 90
   }
@@ -141,14 +140,13 @@ export default class MessageList extends Component {
   _noRowsRenderer () {
     return (
       <div className='No_rows'>
-        No rows
+        まだメッセージが投稿されていません。
       </div>
     )
   }
 
   _onRowsCountChange (event) {
     const rowsCount = parseInt(event.target.value, 10) || 0
-
     this.setState({ rowsCount })
   }
 
@@ -240,11 +238,10 @@ export default class MessageList extends Component {
 
   onUpdate (id) {
     var index = this.getIndex(id)
-    console.log(index)
     this.setState({
       activeEdit: Number(index),
       useDynamicRowHeight: true
-      })
+    })
   }
 
   onCancel (){
