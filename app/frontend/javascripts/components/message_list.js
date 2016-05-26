@@ -25,14 +25,13 @@ export default class MessageList extends Component {
       virtualScrollRowHeight: 90,
       virtualScrollHeight: window.innerHeight - 150,
       virtualScrollWidth: window.innerWidth - 270,
-      list: []
+      list: [],
+      activeEdit: undefined
     }
 
     this.onPost = this.onPost.bind(this)
     this.setList = this.setList.bind(this)
     this.getIndex = this.getIndex.bind(this)
-    this.editMessage = this.editMessage.bind(this)
-    this.deleteMessage = this.deleteMessage.bind(this)
     this.componentDidMount = this.componentDidMount.bind(this)
     this.componentWillUnmount = this.componentWillUnmount.bind(this)
     this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this)
@@ -41,7 +40,6 @@ export default class MessageList extends Component {
     this._onRowsCountChange = this._onRowsCountChange.bind(this)
     this._onScrollToRowChange = this._onScrollToRowChange.bind(this)
     this._rowRenderer = this._rowRenderer.bind(this)
-    this._updateUseDynamicRowHeight = this._updateUseDynamicRowHeight.bind(this)
     this.handleResize = this.handleResize.bind(this)
   }
   componentDidMount () {
@@ -133,7 +131,11 @@ export default class MessageList extends Component {
   }
 
   _getRowHeight (index) {
-    return this._getDatum(index).length
+    console.log(index == this.state.activeEdit)
+    if (index == this.state.activeEdit){
+      return 180
+    }
+    return 90
   }
 
   _noRowsRenderer () {
@@ -162,25 +164,19 @@ export default class MessageList extends Component {
   }
 
   _rowRenderer (index) {
-    const { useDynamicRowHeight } = this.state
     let datum = this._getDatum(index)
-
     return (
       <Message
       id = {datum.id}
       text = {datum.text}
       date = {datum.created_at}
       name = {datum.nickname}
-      onDelete = {this.deleteMessage}
-      onEdit = {this.editMessage}
+      onDelete = {::this.deleteMessage}
+      onEdit = {::this.editMessage}
+      onUpdate = {::this.onUpdate}
+      onCancel = {::this.onCancel}
       />
     )
-  }
-
-  _updateUseDynamicRowHeight (value) {
-    this.setState({
-      useDynamicRowHeight: value
-    })
   }
 
   deleteMessage (id) {
@@ -221,6 +217,10 @@ export default class MessageList extends Component {
     .send({text: text})
     .end(function(err, res){
     });
+    this.setState({
+      scrollToIndex:undefined,
+      useDynamicRowHeight:false
+    })
   }
 
   onPost (text) {
@@ -230,10 +230,26 @@ export default class MessageList extends Component {
     .end(function(err, res){
     });
   }
+
   handleResize () {
    this.setState({
     virtualScrollHeight: window.innerHeight - 150,
     virtualScrollWidth: window.innerWidth - 270
    });
+  }
+
+  onUpdate (id) {
+    var index = this.getIndex(id)
+    console.log(index)
+    this.setState({
+      activeEdit: Number(index),
+      useDynamicRowHeight: true
+      })
+  }
+
+  onCancel (){
+    this.setState({
+      useDynamicRowHeight:false
+    })
   }
 }

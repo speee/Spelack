@@ -10,7 +10,9 @@ export default class Message extends Component {
     date: PropTypes.any.isRequired,
     name: PropTypes.string.isRequired,
     onDelete: PropTypes.func.isRequired,
-    onEdit: PropTypes.func.isRequired
+    onEdit: PropTypes.func.isRequired,
+    onUpdate: PropTypes.func.isRequired,
+    onCancel: PropTypes.func.isRequired
   }
   constructor (props) {
     super(props)
@@ -38,7 +40,7 @@ export default class Message extends Component {
     if (this.state.edit){
       main_content = <span>
           <textarea className = "message_edit_form"  ref="textArea" defaultValue={this.props.text} ></textarea>
-          <button className="message_edit_cancel_button" onClick={::this.onCancel}>Cancel</button>
+          <button className="message_edit_cancel_button" onClick={::this._onCancel}>Cancel</button>
           <button className="message_edit_save_changes_button" onClick={::this._onEdit}>Save Changes</button>
       </span>
     }
@@ -73,6 +75,7 @@ export default class Message extends Component {
 
   _onUpdate () {
     this.setState({edit: true})
+    this.props.onUpdate(this.props.id)
   }
   _onDelete () {
   this.props.onDelete(this.props.id)
@@ -82,9 +85,10 @@ export default class Message extends Component {
   this.props.onEdit(this.props.id,this.refs.textArea.value)
     this.setState({edit: false})
   }
-  onCancel () {
+  _onCancel () {
     this.setState({
       edit:false
     })
+    this.props.onCancel()
   }
 }
