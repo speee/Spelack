@@ -1,0 +1,16 @@
+body.login-page.bk-img.bk-fixed
+  .form-content
+    .container
+      .row
+        .col-md-6.col-md-offset-3
+          .well.row.pt-2x.pb-3x.bk-light.bk-opacity.mt-4x
+            .col-md-8.col-md-offset-2
+              - if notice
+                h4 = notice
+              - if alert
+                h4 = alert
+              / a.btn.btn-info.mall_1x.text-lg href="/users/sign_in"
+              /   | Sign In
+              .text-center
+                = link_to "Top", root_path, class: "btn btn-info mall_1x text-lg"
+

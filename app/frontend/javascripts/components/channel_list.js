@@ -141,8 +141,8 @@ export default class ChannelList extends Component {
     return result
   }
 
-  _setChannel (channel_id) {
-    this.props.setChannel(channel_id)
+  _setChannel (channel_id, name) {
+    this.props.setChannel(channel_id, name)
   }
 
 }

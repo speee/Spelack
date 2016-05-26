@@ -1,5 +1,5 @@
 Devise.setup do |config|
-  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  # config.mailer = "ApplicationMailer"
   require 'devise/orm/active_record'
   config.case_insensitive_keys = [:email]
   config.strip_whitespace_keys = [:email]
@@ -10,6 +10,7 @@ Devise.setup do |config|
   config.expire_all_remember_me_on_sign_out = true
   config.password_length = 6..128
   config.email_regexp = /\A[^@]+@[^@]+\z/
+  config.mailer_sender = ENV['EMAIL_USER']
   config.reset_password_within = 6.hours
   config.sign_out_via = :delete
   config.scoped_views = true
