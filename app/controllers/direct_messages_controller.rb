@@ -38,6 +38,6 @@ class DirectMessagesController < ApplicationController
   end
 
   def set_dm_channels
-    @dm_channels = current_user.channels.where(status: 3)
+    @dm_channels = current_user.channels.where(status: 2)
   end
 end
