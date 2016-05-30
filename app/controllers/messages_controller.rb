@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   protect_from_forgery secret: [:destroy, :create]
-  skip_before_filter :verify_authenticity_token, only: [:create, :destroy]
+  skip_before_filter :verify_authenticity_token, only: [:create, :destroy, :update]
 
   def create
     @message = Message.new(message_params)
