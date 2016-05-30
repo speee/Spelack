@@ -78,13 +78,17 @@ export default class Message extends Component {
     this.props.onUpdate(this.props.id)
   }
   _onDelete () {
-  this.props.onDelete(this.props.id)
+    this.props.onDelete(this.props.id)
+    if(this.state.edit){
+      this.setState({edit: false})
+    }
   }
 
   _onEdit (e) {
   this.props.onEdit(this.props.id,this.refs.textArea.value)
     this.setState({edit: false})
   }
+
   _onCancel () {
     this.setState({
       edit:false
