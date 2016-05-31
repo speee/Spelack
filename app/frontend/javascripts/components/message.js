@@ -10,7 +10,9 @@ export default class Message extends Component {
     date: PropTypes.any.isRequired,
     name: PropTypes.string.isRequired,
     onDelete: PropTypes.func.isRequired,
-    onEdit: PropTypes.func.isRequired
+    onEdit: PropTypes.func.isRequired,
+    onUpdate: PropTypes.func.isRequired,
+    onCancel: PropTypes.func.isRequired
   }
   constructor (props) {
     super(props)
@@ -21,9 +23,11 @@ export default class Message extends Component {
     }
   }
   render () {
+    let date = new Date(this.props.date)
+    let date_text = date.getFullYear() + '年' + (date.getMonth()+1) + '月' + date.getDate() + '日' + date.getHours() + ':' +   date.getMinutes()
     let message_menu
     let main_content = <span className = 'text'>{this.props.text}</span>
-    if (this.state.hovered && window.nickname == this.props.name){
+    if (this.state.hovered && (window.nickname == this.props.name)){
       message_menu = <span>
             <button className="message_edit_button ml_1x" type="button" onClick = {::this._onUpdate}>
               <span className="glyphicon glyphicon-pencil" aria-hidden="true"></span>
@@ -36,7 +40,7 @@ export default class Message extends Component {
     if (this.state.edit){
       main_content = <span>
           <textarea className = "message_edit_form"  ref="textArea" defaultValue={this.props.text} ></textarea>
-          <button className="message_edit_cancel_button" onClick={::this._onEdit}>Cancel</button>
+          <button className="message_edit_cancel_button" onClick={::this._onCancel}>Cancel</button>
           <button className="message_edit_save_changes_button" onClick={::this._onEdit}>Save Changes</button>
       </span>
     }
@@ -49,7 +53,7 @@ export default class Message extends Component {
         <div className = 'message_content'>
           <div className="message_header">
             <span className = 'nickname'>{this.props.name}</span>
-            <span className = 'transmission_time'>{this.props.date}</span>
+            <span className = 'transmission_time'>{date_text}</span>
           </div>
           <div className = 'message_body'>
             {main_content}
@@ -71,13 +75,24 @@ export default class Message extends Component {
 
   _onUpdate () {
     this.setState({edit: true})
+    this.props.onUpdate(this.props.id)
   }
   _onDelete () {
-  this.props.onDelete(this.props.id)
+    this.props.onDelete(this.props.id)
+    if(this.state.edit){
+      this.setState({edit: false})
+    }
   }
 
   _onEdit (e) {
   this.props.onEdit(this.props.id,this.refs.textArea.value)
     this.setState({edit: false})
+  }
+
+  _onCancel () {
+    this.setState({
+      edit:false
+    })
+    this.props.onCancel()
   }
 }

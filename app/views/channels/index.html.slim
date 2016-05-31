@@ -1,13 +1,11 @@
 javascript:
   window.nickname = '#{@nickname}';
-.no_attachment_max_width.light_theme
+div
   header.brand.clearfix
-    span.menu-btn
-      i.fa.fa-bars
     ul.ts-profile-nav
       li.ts-account
         a href="#"
-          img.ts-avatar.hidden-side src="/images/default_avatar.png" alt=""
+          == image_tag "default_avatar.png", :alt => "avatar", :class => "ts-avatar hidden-side"
           |  #{@nickname}
           span.glyphicon.glyphicon-triangle-bottom.ml_1x[aria-hidden="true"]
         ul
@@ -18,8 +16,7 @@ javascript:
           li
             = link_to 'Logout', destroy_user_session_path, method: :delete, id: 'logout'
     .channel_name
-      span.channel_title
-        | # general
+      span#channel_title
       a.channel_setting href="#"
         span.glyphicon.glyphicon-cog.ml_1x[aria-hidden="true"]
   .ts-main-content
@@ -36,22 +33,6 @@ javascript:
         li.ts-label
           | CHANNELS (#{@channels.length})
         li#channels
-      ul.ts-profile-nav
-        li
-          a[href="#"]
-            | Settings
-        li.ts-account
-          a[href="#"]
-            img.ts-avatar.hidden-side src="/images/default_avatar.png" alt=""
-            |  Account
-            i.fa.fa-angle-down.hidden-side
-          ul
-            li
-              = link_to 'My Account', '#'
-            li
-              = link_to 'Edit Account', '#'
-            li
-              = link_to 'Logout', destroy_user_session_path, method: :delete, id: 'logout'
     .content-wrapper
       .container-fluid
         .row

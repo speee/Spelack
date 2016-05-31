@@ -142,7 +142,7 @@ a:hover {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url(/assets/background-image.jpg);
+  background-image:url(<%= asset_path 'background-image.jpg' %>);
 }
 .bk-fixed {
   background-attachment: fixed;
@@ -585,10 +585,8 @@ li {
   display: block;
   width: 200px;
 }
-@media only screen and (min-width: 992px) {
-  .brand .logo {
-    width: 250px;
-  }
+.brand .logo {
+  width: 250px;
 }
 .brand .logo img {
   height: 20px;
@@ -610,10 +608,8 @@ li {
   color: #fff;
   padding: 20px 20px;
 }
-@media only screen and (min-width: 992px) {
-  .brand .menu-btn {
-    display: none;
-  }
+.brand .menu-btn {
+  display: none;
 }
 
 .brand .ts-profile-nav {
@@ -632,19 +628,28 @@ li {
 .brand .ts-profile-nav li ul {
   visibility: hidden;
   opacity: 0;
-  right: 0;
+  right: -10px;
+  top: 45px;
   position: absolute;
+  background-color: #fff;
+  border: 2px solid #E0E0E0;
+  border-radius: 6px 6px 6px 6px;
+  padding: 5px
 }
 .brand .ts-profile-nav li ul li {
   float: none;
-  width: 180px;
+  width: 200px;
 }
 .brand .ts-profile-nav li ul li a {
-  padding: 10px 20px;
-  background: #222;
+  padding: 1px 2px;
+  background-color: #fff;
+  border: 2px solid #fff;
+  border-radius: 6px 6px 6px 6px;
+  color: #000;
 }
 .brand .ts-profile-nav li ul li a:hover {
-  background-color: #000;
+  background: #3aa3e3;
+  color: #fff;
 }
 .brand .ts-profile-nav .ts-account .fa-angle-down {
   float: right;
@@ -654,19 +659,18 @@ li {
   background: #2c3136;
 }
 .brand .ts-profile-nav .ts-account .ts-avatar {
-  border-radius: 50%;
+  border-radius: 20%;
   height: 28px;
   margin: -10px 0;
   margin-right: 10px;
+  background-color: #fff;
 }
 .brand .ts-profile-nav .ts-account:hover ul {
   visibility: visible;
   opacity: 1;
 }
-@media only screen and (min-width: 992px) {
-  .brand .ts-profile-nav {
-    display: block;
-  }
+.brand .ts-profile-nav {
+  display: block;
 }
 .ts-sidebar::-webkit-scrollbar-track {
   background-color: transparent;
@@ -700,16 +704,12 @@ li {
   padding: 10px 15px;
   color: #fff;
 }
-@media only screen and (min-width: 992px) {
-  .ts-sidebar .ts-profile-nav {
-    display: none;
-  }
+.ts-sidebar .ts-profile-nav {
+  display: none;
 }
-@media only screen and (min-width: 992px) {
-  .ts-sidebar {
-    max-height: 100%;
-    bottom: 0;
-  }
+.ts-sidebar {
+  max-height: 100%;
+  bottom: 0;
 }
 .ts-sidebar-menu .ts-label {
   /*color: #585c64;*/
@@ -773,14 +773,12 @@ li {
   padding-top: 15px;
   margin-top: 60px;
 }
-@media only screen and (min-width: 992px) {
-  .ts-main-content .ts-sidebar {
-    width: 250px;
-    float: left;
-  }
-  .ts-main-content .content-wrapper {
-    margin-left: 250px;
-  }
+.ts-main-content .ts-sidebar {
+  width: 250px;
+  float: left;
+}
+.ts-main-content .content-wrapper {
+  margin-left: 250px;
 }
 /* Login page */
 .login-page {

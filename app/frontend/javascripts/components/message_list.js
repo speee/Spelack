@@ -18,30 +18,32 @@ export default class MessageList extends Component {
     super(props)
 
     this.state = {
-      overscanRowsCount: 5,
+      overscanRowsCount: 20,
       rowsCount: 0,
       scrollToIndex: undefined,
       useDynamicRowHeight: false,
-      virtualScrollHeight: 300,
-      virtualScrollRowHeight: 60,
-      list: []
+      virtualScrollRowHeight: 90,
+      virtualScrollHeight: window.innerHeight - 150,
+      virtualScrollWidth: window.innerWidth - 270,
+      list: [],
+      activeEdit: undefined
     }
 
     this.onPost = this.onPost.bind(this)
     this.setList = this.setList.bind(this)
     this.getIndex = this.getIndex.bind(this)
-    this.editMessage = this.editMessage.bind(this)
-    this.deleteMessage = this.deleteMessage.bind(this)
     this.componentDidMount = this.componentDidMount.bind(this)
+    this.componentWillUnmount = this.componentWillUnmount.bind(this)
     this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this)
     this._getRowHeight = this._getRowHeight.bind(this)
     this._noRowsRenderer = this._noRowsRenderer.bind(this)
     this._onRowsCountChange = this._onRowsCountChange.bind(this)
     this._onScrollToRowChange = this._onScrollToRowChange.bind(this)
     this._rowRenderer = this._rowRenderer.bind(this)
-    this._updateUseDynamicRowHeight = this._updateUseDynamicRowHeight.bind(this)
+    this.handleResize = this.handleResize.bind(this)
   }
   componentDidMount () {
+    window.addEventListener('resize', this.handleResize);
     this.setList(this.props.channel_id)
     this.setupSubscription()
     ReactDOM.render(
@@ -49,6 +51,9 @@ export default class MessageList extends Component {
         onPost = {this.onPost}
       />,document.getElementById('messageform')
       );
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleResize);
   }
 
   setupSubscription() {
@@ -69,7 +74,7 @@ export default class MessageList extends Component {
         this.setState({
           list:JSON.parse(res.text),
           rowsCount:JSON.parse(res.text).length,
-          scrollToIndex:JSON.parse(res.text).length-1
+          scrollToIndex:JSON.parse(res.text).length - 1
         })
       }
     );
@@ -91,22 +96,23 @@ export default class MessageList extends Component {
       rowsCount,
       scrollToIndex,
       useDynamicRowHeight,
-      virtualScrollHeight,
       virtualScrollRowHeight,
+      virtualScrollHeight,
+      virtualScrollWidth,
       list
     } = this.state
     return (
         <VirtualScroll
           ref='VirtualScroll'
           className='VirtualScroll'
+          width={virtualScrollWidth}
           height={virtualScrollHeight}
           overscanRowsCount={overscanRowsCount}
           noRowsRenderer={this._noRowsRenderer}
           rowsCount={rowsCount}
-          rowHeight={useDynamicRowHeight ? this._getRowHeight : virtualScrollRowHeight}
+          rowHeight={useDynamicRowHeight ? this._getRowHeight : ::this._getRowHeightWithNewLine}
           rowRenderer={this._rowRenderer}
           scrollToIndex={scrollToIndex}
-          width={600}
         />
     )
   }
@@ -124,21 +130,35 @@ export default class MessageList extends Component {
     return list[(index % list.length)]
   }
 
+  _getRowHeightWithNewLine (index) {
+    var space = this.state.list[index].text.split('\n').length - 1
+    if(space){
+      return 90 + (space * 17)
+    }
+    return 90
+  }
+
   _getRowHeight (index) {
-    return this._getDatum(index).length
+    if (index == this.state.activeEdit){
+      return 170
+    }
+    var space = this.state.list[index].text.split('\n').length - 1
+    if(space){
+      return 90 + (space * 20)
+    }
+    return 90
   }
 
   _noRowsRenderer () {
     return (
       <div className='No_rows'>
-        No rows
+        まだメッセージが投稿されていません。
       </div>
     )
   }
 
   _onRowsCountChange (event) {
     const rowsCount = parseInt(event.target.value, 10) || 0
-
     this.setState({ rowsCount })
   }
 
@@ -154,25 +174,19 @@ export default class MessageList extends Component {
   }
 
   _rowRenderer (index) {
-    const { useDynamicRowHeight } = this.state
     let datum = this._getDatum(index)
-
     return (
       <Message
       id = {datum.id}
       text = {datum.text}
       date = {datum.created_at}
       name = {datum.nickname}
-      onDelete = {this.deleteMessage}
-      onEdit = {this.editMessage}
+      onDelete = {::this.deleteMessage}
+      onEdit = {::this.editMessage}
+      onUpdate = {::this.onUpdate}
+      onCancel = {::this.onCancel}
       />
     )
-  }
-
-  _updateUseDynamicRowHeight (value) {
-    this.setState({
-      useDynamicRowHeight: value
-    })
   }
 
   deleteMessage (id) {
@@ -205,7 +219,7 @@ export default class MessageList extends Component {
   listed[index].text = text
   this.setState({
     list: listed,
-    scrollToIndex: Number(index)
+    scrollToIndex: Number(index),
   });
 
   request
@@ -213,6 +227,11 @@ export default class MessageList extends Component {
     .send({text: text})
     .end(function(err, res){
     });
+    this.setState({
+      scrollToIndex:undefined,
+      activeEdit: undefined,
+      useDynamicRowHeight:false
+    })
   }
 
   onPost (text) {
@@ -221,5 +240,26 @@ export default class MessageList extends Component {
     .send({text: text,channel_id: this.props.channel_id})
     .end(function(err, res){
     });
+  }
+
+  handleResize () {
+   this.setState({
+    virtualScrollHeight: window.innerHeight - 150,
+    virtualScrollWidth: window.innerWidth - 270
+   });
+  }
+
+  onUpdate (id) {
+    var index = this.getIndex(id)
+    this.setState({
+      activeEdit: Number(index),
+      useDynamicRowHeight: true
+    })
+  }
+
+  onCancel (){
+    this.setState({
+      activeEdit: undefined
+    })
   }
 }

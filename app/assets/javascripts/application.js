@@ -12,9 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require react
 //= require components
 //= require channels
-//= require react_ujs
 //= require bootstrap
 //= require_tree .
