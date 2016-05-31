@@ -33,10 +33,8 @@ class User < ActiveRecord::Base
                          token:    auth.credentials.token,
                          password: Devise.friendly_token[0, 20],
                          email:    auth.info.email)
-                         # meta:     auth.to_yaml)
     end
     user
 
-    # binding.pry
   end
 end
