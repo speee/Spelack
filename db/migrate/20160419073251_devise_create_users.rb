@@ -41,7 +41,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :users, :uid
       t.string :users, :token
       t.string :users, :name
-      t.string :users, :meta
+      # t.string :users, :meta
 
 
       t.timestamps null: false

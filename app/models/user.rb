@@ -24,12 +24,19 @@ class User < ActiveRecord::Base
 
     unless user
       user = User.create(name:     auth.info.name,
+                         nickname: auth.info.name,
+                         first_name:auth.info.first_name,
+                         last_name:auth.info.last_name,
+                         confirmed_at: Time.now,
                          provider: auth.provider,
                          uid:      auth.uid,
                          token:    auth.credentials.token,
                          password: Devise.friendly_token[0, 20],
-                         email:    auth.info.email,
-                         meta:     auth.to_yaml)
+                         email:    auth.info.email)
+                         # meta:     auth.to_yaml)
     end
+    user
+
+    # binding.pry
   end
 end

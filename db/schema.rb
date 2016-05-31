@@ -86,7 +86,6 @@ ActiveRecord::Schema.define(version: 20160512072602) do
     t.string   "uid",                    limit: 255
     t.string   "token",                  limit: 255
     t.string   "name",                   limit: 255
-    t.string   "meta",                   limit: 255
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
     t.string   "avatar_file_name",       limit: 255
