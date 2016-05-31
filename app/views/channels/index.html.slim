@@ -5,7 +5,7 @@ div
     ul.ts-profile-nav
       li.ts-account
         a href="#"
-          img.ts-avatar.hidden-side src="/images/default_avatar.png" alt=""
+          == image_tag "default_avatar.png", :alt => "avatar", :class => "ts-avatar hidden-side"
           |  #{@nickname}
           span.glyphicon.glyphicon-triangle-bottom.ml_1x[aria-hidden="true"]
         ul
@@ -45,4 +45,3 @@ div
           #msg_preview_msg.message
         #messages-input-container[style="height: 42px;"]
           #messageform
-= javascript_include_tag 'bundle/bundle', 'data-turbolinks-track' => true

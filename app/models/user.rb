@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   has_many :messages
 
 
-  validates :nickname, presence: true, length: { maximum: 20 }
+  validates :nickname, presence: true, length: { maximum: 20 }, uniqueness: true
   validates :first_name, presence: true, length: { maximum: 30 }
   validates :middle_name, length: { maximum: 30 }
   validates :last_name, presence: true, length: { maximum: 30 }

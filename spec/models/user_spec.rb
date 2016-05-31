@@ -11,6 +11,14 @@ RSpec.describe User do
       context 'when nickname is over the max characters' do
         it { is_expected.to be_invalid_on(:nickname).with('a' * 21) }
       end
+
+      context 'When nickname is already registered' do
+        before do
+          user = create(:user)
+          @nickname = user.nickname
+        end
+        it { is_expected.to be_invalid_on(:nickname).with(@nickname) }
+      end
     end
 
     describe 'first_name' do
