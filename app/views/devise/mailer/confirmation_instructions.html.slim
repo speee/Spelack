@@ -1,9 +1,9 @@
 p
-  | Welcome
+  | そうこそ
   br
   = @email
-  | !
+  | 　さん!
 p
-  | You can confirm your account email through the link below:
+  | 以下のリンクをにアクセスしていただくとアカウントが認証されます:
 p
   = link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token)
