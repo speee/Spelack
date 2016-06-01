@@ -10,8 +10,8 @@ Rails.application.configure do
       servers: 'redis://spelackec-001.apvows.0001.apne1.cache.amazonaws.com:6379/0',
       expire_in: 1.day
   config.assets.js_compressor = :uglifier
-  Rails.application.config.action_cable.allowed_request_origins = ['http://52.196.227.190']
-  config.action_mailer.default_url_options = { host: '52.196.227.190' }
+  Rails.application.config.action_cable.allowed_request_origins = ['http://52.68.200.37']
+  config.action_mailer.default_url_options = { host: '52.68.200.37' }
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_options = { from: ENV['EMAIL_USER'] }
