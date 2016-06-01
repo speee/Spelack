@@ -15,9 +15,6 @@ Devise.setup do |config|
   config.sign_out_via = :delete
   config.scoped_views = true
   config.omniauth :google_oauth2,
-                  Rails.application.secrets.google_client_id,
-                  Rails.application.secrets.google_client_secret
-
-
-
+                  ENV['GOOGLE_CLIENT_ID'],
+                  ENV['SECRET_CLIENT_SECRET']
 end
